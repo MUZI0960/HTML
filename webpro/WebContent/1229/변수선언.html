@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+div {
+	height: 150px;
+	border: 1px dotted blue;
+	margin: 10px;
+	padding: 10px;
+}
+</style>
+</head>
+<body>
+<script type="text/javascript">
+
+function proc1() {
+	let a = "홍길동";
+	// id=res1을 검색하여 출력 - innerHTML / innerText
+	vres = document.getElementById('res1');
+	
+	for(var i =0;i<5;i++){
+		vres.innerHTML += a + "<br>";	
+	}
+	
+	// i변수는 var로 선언했기 때문에 사용 가능
+	vres.innerHTML += i + "<br>";
+	
+// 	var a = 123; 	  var는 재선언도 쌉가능~~
+// 	vres.innerHTML += a;
+
+// 	let a = 123;	  let은 불가능.. 쌉불가능 ㅠㅠ	
+// 	vres.innerHTML += a;
+
+	// 하지만 재할당은 쌉가능^^
+	a = 123;
+	vres.innerHTML += a;
+}
+function proc2() {
+	vres.innerHTML="개나리";
+}
+function proc3() {
+	const a = "korea";
+	
+	// const는 재선언 재할당 안됨 
+// 	a+="화이팅!!"
+	
+	vres = document.getElementById('res3');
+	vres.innerHTML = a;
+	
+	
+}
+
+</script>
+
+<input type="button" value="확인1" onclick="proc1()">
+<input type="button" value="확인2" onclick="proc2()">
+<input type="button" value="확인3" onclick="proc3()">
+<br><br>
+<div id="res1"></div>
+<div id="res2"></div>
+<div id="res3"></div>
+</body>
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<style>
+
+h1 {
+	text-align: center;
+	width: 40%;
+	margin: 50px auto;
+}
+
+form {
+	border : 3px solid blue;
+	width: 50%;
+	padding : 15px;
+	margin: 50px auto;
+}
+.lab{
+	display: inline-block;
+	width: 60px;
+	height: 35px;
+}
+
+textarea {
+	/* box-sizing: border-box;  content-box */
+	width: 80%;
+}
+
+input {
+	background-color: skyblue;
+}
+.txt{
+	background-color: pink; 
+}
+input[type=text] {
+	background-color : red;
+}
+input[type=submit] {
+	background-color: blue;
+	color: white;
+	font-size: 1.3em; 
+}
+
+</style>
+
+</head>
+<body>
+
+<h1>회원가입 화면</h1>
+
+<form action="form연습.jsp" method="post">
+
+	<label class="lab">이름</label>
+	<input type="text" class="txt" name="name"><br>
+	
+	<label class="lab">주소</label>
+	<input type="text" class="txt" name="addr"><br>
+	
+	<label class="lab">이메일</label>
+	<input type="text" class="txt" name="email"><br>
+	
+	<label class="lab">성별</label>
+	<input type="radio" value="Male" name="Male">Male
+	<input type="radio" value="Female" name="Female">Female<br>
+	
+	<label class="lab">내용</label>
+	<textarea rows="10px" class="txt" cols="30px" name="text"></textarea><br><br>
+	
+	<input type="submit">
+	<input type="reset">
+
+
+</form>
+
+
+</body>
+</html>

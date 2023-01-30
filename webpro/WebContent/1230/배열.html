@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/public.css">
+</head>
+<script type="text/javascript">
+var arr = ["사과", "바나나", "딸기", "체리", "복숭아"];
+
+proc1 = () =>{
+	str = "";
+	for(i = 0; i < arr.length; i++){
+		str += arr[i] + " ";
+	}
+	
+	document.getElementById('res1').innerHTML = str;
+	
+	
+}
+proc2 = () =>{
+	document.getElementById('res2').innerHTML = arr;
+	
+}
+proc3= () =>{
+	str = "";
+	for(x in arr){
+		str += arr[x] + "&nbsp&nbsp";
+	}
+	document.getElementById('res3').innerHTML = str;
+}
+
+</script>
+<body>
+<h3>var arr = ["사과", "바나나", "딸기", "체리", "복숭아"];</h3>
+
+<h3>var arr = new Array() / var arr = new Array(3) </h3>
+arr[0]="사과"; arr[1]="바나나"; arr[2]="복숭아"
+arr[3]="포도"; arr[4]="수박";
+
+<h3>var arr = new Array("사과", "바나나", "딸기", "체리", "복숭아")</h3>
+<div class="box">
+	<pre>
+	for(i = 0; i &lt; arr.length; i++){
+		str += arr[i] + " ";
+	}
+	</pre>
+	<br><br>
+	<input type="button" value="확인" onclick="proc1()">
+	<br>
+	<div id="res1"></div>
+</div>
+
+<div class="box">
+	<pre>
+	document.getElementById('res2').innerHTML = arr;
+	</pre>
+	<br><br>
+	<input type="button" value="확인" onclick="proc2()">
+	<br>
+	<div id="res2"></div>
+</div>
+
+<div class="box">
+	<pre>
+	str = "";
+	for(x in arr){
+		str += arr[x] + "&nbsp&nbsp";
+	}
+	document.getElementById('res3').innerHTML = str;
+}
+	</pre>
+	<br><br>
+	<input type="button" value="확인" onclick="proc3()">
+	<br>
+	<div id="res3"></div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=Nanum+Brush+Script&display=swap" rel="stylesheet">
+<style type="text/css">
+iframe {
+	display: none;
+	
+}
+#iframeMov{
+	display: flex;
+	justify-content: space-around;
+}
+img {
+	width: 20%;
+	height: 20%;
+}
+img:active{
+	opacity: 0.5;
+}
+div{
+	text-align: center;
+	font-family: 'Gowun Dodum', sans-serif;
+}
+</style>
+<script type="text/javascript">
+function proc1(){
+	
+	var movie = document.getElementById('vif1');
+	movie.style.display = "block";
+	
+}
+function proc2(){
+	
+	var movie = document.getElementById('vif2');
+	movie.style.display = "block";
+	
+}
+</script>
+</head>
+<body>
+<div>
+<div id="iframeMov">
+<iframe id="vif1" width="560" height="315" src="https://www.youtube.com/embed/cU_lhnaFNiA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<iframe id="vif2" width="560" height="315" src="https://www.youtube.com/embed/lxRrFVn8qUQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>
+<br><br>
+<img alt="영화1.jpg" src="../images/영화1.jpg" onclick="proc1()">
+<img alt="영화2.jpg" src="../images/영화2.jpg" onclick="proc2()">
+<h3>클릭 시 예고편 감상 가능</h3>
+</div>
+</body>
+</html>

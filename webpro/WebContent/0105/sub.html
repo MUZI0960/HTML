@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/public.css">
+<script type="text/javascript">
+proc1 = () =>{
+	
+	// id = name을 검색하여 입력한 값을 가져온다 (value)
+	namevalue = document.getElementById('name').value;
+	
+	// 부모창의 id가 res2인 요소를 검색하여 출력한다.
+	 opener.document.getElementById('res2').innerHTML = namevalue;
+	
+	 window.close();
+}
+
+</script>
+
+</head>
+<body>
+
+<div class="box">
+	이름을 입력하여 부모창의 id가 res2인 요소를 검색하여 출력한다.<br><br>
+	이름 <input type="text" id="name">
+	<br><br>
+	<input type="button" value="확인" onclick="proc1()">
+	<br>
+	<div id="res1"></div>
+</div>
+</body>
+</html>

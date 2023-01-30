@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="shortcut icon" type="image/x-icon" href="../images/check.png">
+<style>
+
+	pre{
+		font-size: 1.5em;
+		border: 5px double blue;
+		border-left: none;
+		border-right: none;
+		padding: 10px;
+		background-color: #E6E6FA;
+	}
+
+	video{
+		width: 400px;
+		height: 300px;
+	}
+	
+	img {
+	width: 100px;
+	height: 100px;
+}
+	#vif{
+	display: none;	/* 초기값 : none =>화면에서 안보이도록 설정 / block or inline => 보여짐 */
+}
+
+</style>
+
+<script>
+	function proc(){
+		// iframe을 보이도록 설정 - iframe 요소를 검색 - id이용 검색
+		var aa = document.getElementById('vif');
+		
+		aa.style.display = "block";
+		
+		
+	}
+</script>
+
+</head>
+<body>
+	<pre>
+스크립트에서 html요소를 검색하는 방법
+1. 태그이름 이용 - aa = document.getElementsByTagName('iframe')[0]
+2. id이름 이용 - aa = document.getElementById('vif');
+3. class이름 이용 - aa = document.getElementsByClassName('vcifr')[0]</pre>
+	<video autoplay="autoplay" controls="controls" muted="muted">
+		<source src="../multi/trailer.ogv">
+		<source src="../multi/trailer.mp4">
+		<source src="../multi/trailer.webm">
+	</video>
+	<h1>유튜브 영상</h1>
+	<img src = "../images/라일락.jpg" alt="라일락.jpg" onclick="proc()">
+	<br><br>
+	<iframe id="vif" width="560" height="315" 
+	src="https://www.youtube.com/embed/pSUydWEqKwE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+	
+</body>
+</html>
+
+
+
+
+

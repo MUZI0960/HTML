@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<style>
+
+form {
+	border: 1px solid blue;
+	padding: 15px;
+	width : 50%;
+	margin: 5px auto; 
+}
+
+label.lab{
+	display: inline-block;
+	width: 70px;
+	height: 35px;
+}
+</style>
+
+</head>
+<body>
+<form action="formsend3.jsp" method="post">
+
+<label class="lab">이름</label>
+<input type="text" name="name"><br>
+
+<label class="lab">첨부파일</label>
+<input type="file" name="file"><br>
+<br>
+<label>좋아하는 음식(한식)</label><br>
+<select name="korea" multiple="multiple" size="5">
+	<option>떡볶이</option>
+	<option>라면</option>
+	<option selected>김밥</option>
+	<option>김치찌개</option>
+	<option>된장찌개</option>
+	<option>삼겹살</option>
+</select>
+<br><br>
+<label>좋아하는 음식(양식)</label><br>
+<select name="ameri">
+	<option>피자</option>
+	<option>파스타</option>
+	<option selected>햄버거</option> <!-- selected 초기값 설정 -->
+	<option>스테이크</option>
+</select>
+<br>
+<input type="image" src="../images/check.png" alt="check.png"><br>
+<input type="submit" value="전송">
+<input type="button" value="확인">
+<input type="reset">
+<br><br>
+<button type="button">확인</button>
+<button type="submit">전송</button>
+<button>전송</button>
+
+
+</form>
+</body>
+</html>

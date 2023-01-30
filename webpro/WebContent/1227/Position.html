@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+div {
+	width: 100px;
+	height: 100px;
+	border: 2px solid blue;
+	margin: 10px;
+}
+.d1{
+	background: lightgreen;
+}
+.d2{
+	background: lightblue;
+}
+.d3{
+	background: pink;
+}
+.d4{
+	background: orange;
+}
+#id2{
+	position: relative;
+	left : 80px;
+	top: 50px;
+	font-size: 0.9em;
+}
+#id3{
+	position: absolute;
+	top : 250px;
+	left: 200px;
+	font-size: 0.9em;
+}
+#id4{
+	position: fixed;
+	top : 250px;
+	right: 200px;
+	font-size: 0.9em;
+}
+</style>
+</head>
+<body>
+<div class="d1">d1</div>
+<div class="d2">d2</div>
+<div class="d3">d3</div>
+<div class="d4">d4</div>
+<hr>
+<div class="d1">d1</div>
+<div id="id2" class="d2">
+id2 d2<br>
+position: relative;<br>
+left : 80px;<br>
+top: 50px;<br>
+</div>
+<div class="d3">d3</div>
+<div class="d4">d4</div>
+<hr>
+<div class="d1">d1</div>
+<div id="id3" class="d2">
+id3 d2<br>
+position: absolute;<br>
+top : 250px;<br>
+left: 200px;<br>
+</div>
+<div class="d3">d3</div>
+<div class="d4">d4</div>
+<br>
+<div class="d1">d1</div>
+<div id="id4" class="d2">
+id4 d2<br>
+position: fixed;<br>
+top : 250px;<br>
+right: 200px;<br>
+</div>
+<div class="d3">d3</div>
+<div class="d4">d4</div>
+</body>
+</html>
+
+
+

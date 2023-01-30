@@ -1,0 +1,30 @@
+@charset "UTF-8";
+
+pre{
+	font-size: 1.5em;
+	border: 5px double blue;
+	border-left: none;
+	border-right: none;
+	padding: 10px;
+	background-color: #E6E6FA;
+}
+.box{
+	margin: 10px;
+	padding: 10px;
+	border: 1px dotted gray;
+	background-color: lightgray; 
+}
+.box div{
+/* 	height: 100px; */
+	padding: 10px;
+	margin: 20px;
+	border: 1px dotted green;
+}
+input[type=button]{
+	width: 100px;
+	height: 40px;
+	background: skyblue;
+	font-size: 1.2em;
+	border-radius: 20px; 
+	border: 1px solid skyblue;
+}

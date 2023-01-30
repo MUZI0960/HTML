@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/public.css">
+<script type="text/javascript">
+function Person(first, last, age, gender) {
+	this.first = first;
+	this.last = last;
+	this.age = age;
+	this.gender = gender;
+	
+	this.getPrint = function(){
+		str = `이름 : ${this.first + this.last}<br>`;
+		str += `나이 : ${this.age}<br>`;
+		str += `성별 : ${this.gender}<br>`;
+		
+		return str;	
+	}
+}
+
+	const person = new Person('홍','길동',26,'남자'); 
+proc1 = () =>{
+	info = person.getPrint();
+	
+	document.querySelector('#res1').innerHTML = info;
+}
+
+proc2 = () =>{
+	person.tel = "1234";
+	person.getTel = function() {
+		return `전화번호 : ${this.tel}<br>`;
+	}
+	vinfo = person.getPrint();
+	vtel = person.getTel();
+	
+	document.querySelector('#res2').innerHTML = vinfo;
+	document.querySelector('#res2').innerHTML += vtel;
+	
+	
+}
+
+</script>
+</head>
+<body>
+<pre>
+버튼 클릭 시 Person객체의 정보를 출력한다.
+const person = new Person('홍','길동',26,'남자'); 
+</pre>
+<div class="box">
+	<br><br>
+	<input type="button" value="확인" onclick="proc1()">
+	<br>
+	<div id="res1"></div>
+</div>
+
+<div class="box">
+	<p>버튼을 클릭하면 전화번호를 추가한다.</p>
+	<br><br>
+	<input type="button" value="확인" onclick="proc2()">
+	<br>
+	<div id="res2"></div>
+</div>
+</body>
+</html>

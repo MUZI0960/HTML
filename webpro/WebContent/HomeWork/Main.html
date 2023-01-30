@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap" rel="stylesheet">
+<style type="text/css">
+header, nav, section, aside, footer{
+	border: 1px solid white;
+	margin: 10px;
+}
+
+header{
+	background: linear-gradient(132deg, rgba(81,122,207,1) 0%, rgba(34,124,112,1) 30%, rgba(159,191,146,1) 98%);
+	height: 100px;
+	
+}
+
+header h1{
+	letter-spacing: 5px;
+	margin-top: 30px;
+	margin-left: 10%;
+	font-family: 'Do Hyeon', sans-serif;
+}
+h3{
+	text-align: center;
+	font-family: 'Do Hyeon', sans-serif;
+	margin-top: 30px;
+	
+}
+ul#left_ul{
+	padding: 0;
+}
+ul#left_ul li{
+	border: 1px solid black;
+	padding: 20px;
+}
+
+ul#left_ul li:hover{
+	background-color: #6B728E;	
+	text-decoration: none;
+}
+
+nav{
+	background-color: #404258;
+	color: white;
+	font-size: 1.2em;
+	font-family: 'Do Hyeon', sans-serif;
+	
+}
+
+#nav_ul{
+   list-style:none;
+   display: flex;
+   justify-content: space-around;
+   margin-top: 10px;
+   }
+
+section{
+	height: 70%;
+	width: 65%;
+	padding: 30px;
+	background-color: rgb(233, 236, 239);
+}
+
+iframe{
+	width: 100%;
+	height: 100vh;
+}
+
+#right{
+	float: right;
+	width: 15%;
+	background-color: #404258;
+	color: white;
+	padding: 10px;
+	font-family: 'Do Hyeon', sans-serif;
+}
+#left{
+	float: left;
+	width: 15%;
+	background-color: #404258;	
+	color: white;
+	font-family: 'Do Hyeon', sans-serif;
+}
+#left h3{
+	margin-top: 30px;
+}
+
+#left_ul{
+   list-style:none;	
+}
+#main{
+	display: flex;
+}
+form {
+	margin: 20px;
+    overflow: hidden;
+}
+a{
+	margin: 20px;
+	text-decoration: none;
+	color: white;
+}
+a:visited {
+	color: white;
+}
+aside#left h3{
+	margin-top: 30px; 
+}
+footer{
+	text-align: center;
+	background: linear-gradient(132deg, rgba(81,122,207,1) 0%, rgba(34,124,112,1) 30%, rgba(159,191,146,1) 98%);
+	height: 100px;
+}
+
+footer h3{
+	margin: 35px;
+}
+</style>
+
+</head>
+<body>
+
+<header>
+<h1>DDIT 쇼핑</h1>
+</header>
+
+<nav>
+<ul id="nav_ul">
+	<li><a>HOME</a></li>
+	<li><a>ABOUT US</a></li>
+	<li><a>NEWS</a></li>
+	<li><a>My Account</a></li>
+	<li><a>Contacts</a></li>
+</ul>
+</nav>
+
+<div id="main">
+<aside id="left">
+	<h3>Category</h3>
+	<ul id="left_ul">
+		<a href="Computer.html" target="con"><li>Computer</li></a>
+		<a href="Clothes.html" target="con"><li>Clothes</li></a>
+		<a href="Music.html" target="con"><li>Music</li></a>
+		<a href="Movies.html" target="con"><li>Movies</li></a>
+		<a href="Sports.html" target="con"><li>Sports</li></a>
+		<a href="Interior.html" target="con"><li>Interior</li></a>
+		<a href="Foods.html" target="con"><li>Foods</li></a>
+	</ul>
+
+</aside>
+
+<section>
+	<article id="article1">
+		<iframe frameborder=0 src="Computer.html" name="con"></iframe>
+	</article>
+</section>
+
+<aside id="right">
+	<div id="cart"></div>
+	
+	<div id="login">
+		<h3>LogIn</h3>
+		<form action="">
+			<input type="text" placeholder="id">
+			<input type="text" placeholder="password"><br><br>
+			<input type="button" value="login">
+			<input type="reset" value="reset">
+		</form>
+	</div>
+	<p><a href="LoginInfo.html">▶ 회원가입</a></p>
+	<p><a href="">▶ 아이디/비밀번호 찾기</a></p>
+	<br>
+	<h3>Shopping Cart</h3>
+	<p>현재 쇼핑카트에 담겨있는 물품이 없습니다.</p>
+	<p><a href="ShopCart.html">▶ 쇼핑카트 보기</a></p>
+</aside>
+
+</div>
+
+<footer><h3>Made By ddit 2211_김지연</h3></footer>
+</body>
+</html>

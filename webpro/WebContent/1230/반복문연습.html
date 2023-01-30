@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+.box{
+	margin: 10px;
+	padding: 10px;
+	border: 1px dotted gray;
+	background-color: lightgray; 
+}
+.box div{
+/* 	height: 100px; */
+	padding: 10px;
+	margin: 20px;
+	border: 1px dotted green;
+}
+input[type=button]{
+	width: 100px;
+	height: 40px;
+	background: skyblue;
+	font-size: 1.2em;
+	border-radius: 20px; 
+	border: 1px solid blue;
+}
+</style>
+
+<script type="text/javascript">
+proc2 = () =>{
+	
+	sum = 0;
+	for(let i = 0; i < 100; i+=2){
+		sum+=i;
+	}
+	
+	sum = 0;
+	for(let i = 1; i<=200; i++){
+		// 짝수판별
+		if(i % 2 == 0){
+			sum+=i;
+		}
+	}
+	
+	sum = 0;
+	for(let i =1; i<=200; i++){
+		if(i % 2 != 0) continue;
+		sum += i;
+	}
+	// 출력
+	result('res2',sum);
+	
+}
+
+proc3 = () =>{
+	var str = "";
+	var sum = 0;
+	while(true){
+		// break 조건 파악
+		input = prompt("숫자 입력");
+		if(input == 0) break;
+		sum += parseInt(input);
+		str += input + " ";
+	}
+	
+	// 출력 내용 작성
+	out = `입력한 값들 : ${str} <br>`;
+	out += `더한 값 : ${sum} <br>`;
+	
+	// 출력
+	result('res3', out);
+	
+}
+
+proc4 = () =>{
+	var sum = 0;
+	for(let i = 0; i<10; i++){
+		for(let k = 0; k<10; k++){
+			if((i+k) % 3 != 0) continue;
+			else {
+				// sum += (i + k);
+				sum += `${i} ${k} <br>`; 
+			}
+				
+		}
+	}
+	
+	result('res4', sum);
+}
+
+proc5 = () =>{
+	var num = "";
+	for(let i=1; i<=100; i++){
+		if( ! (i%2 == 0 && i%3 == 0)) continue;
+		else {
+// 			num += i + " ";
+			num += `${i} `;
+		}
+	}
+	res = `1~100 까지 2의 배수이면서 동시에 3의 배수인 수들<br>`;
+	res += num;
+	result('res5',res);
+}
+
+proc6 = () =>{
+	var num = "";
+	while(true){
+	input1 = parseInt(prompt("첫번째 수 입력"));
+	input2 = parseInt(prompt("두번째 수 입력"));
+	if(input1 == 0 && input2 == 0) break;
+	if( (input1 + input2) < 100 ) continue;
+	num+= `${input1} ${input2} <br>`;
+	}
+	
+	result('res6',num);
+	}
+
+
+result = (res,a) =>{
+	// 출력
+	document.getElementById(res).innerHTML = a;
+}
+</script>
+
+</head>
+<body>
+<div class="box">
+[문제1] 1부터 10까지의 합을 구하는 프로그램을 작성하시오.<br><br>
+<input type="button" value="확인" onclick="proc1()">
+<br>
+<div id="res1"></div>
+</div>
+
+<div class="box">
+[문제2] 1부터 200까지의 짝수의 합을 구하는 프로그램을 작성하시오.(continue를 이용)<br><br>
+<input type="button" value="확인" onclick="proc2()">
+<br>
+<div id="res2"></div>
+</div>
+
+<div class="box">
+[문제3] 사용자가 입력한 값을 계속 더하고, 
+사용자가 0을 입력하면 그때까지 누적된 값을 출력하는 프로그램을 작성하시오.
+<br><br>
+<input type="button" value="확인" onclick="proc3()">
+<br>
+<div id="res3"></div>
+</div>
+
+<div class="box">
+[문제4] 다중 for문을 이용해서 1~ 10 까지 중   
+      i와 k의 더한 합이 3의 배수일 때만 출력 continue를 이용
+<br><br>
+<input type="button" value="확인" onclick="proc4()">
+<br>
+<div id="res4"></div>
+</div>
+
+<div class="box">
+[문제5] 1~100 까지 중 2의 배수이면서 3의 배수인 것만 출력 
+<br><br>
+<input type="button" value="확인" onclick="proc5()">
+<br>
+<div id="res5"></div>
+</div>
+
+<div class="box">
+[문제6] 두 수를 입력(prompt) 두수의 합이 100이상일이때만 출력 
+(continue를 이용 , 두수 모두 0 이 입력되면 종료)
+<br><br>
+<input type="button" value="확인" onclick="proc6()">
+<br>
+<div id="res6"></div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+div {
+	height: 100px;
+	border: 1px dotted black;
+}
+</style>
+
+<script type="text/javascript">
+function proc1() {}
+proc1 = function() {}
+proc1 = () =>{
+	
+	// 입력
+	first = prompt("첫번째 입력", "가위 바위 보");
+	second = prompt("두번째 입력", "가위 바위 보");
+	
+	if(first == second){
+		str = "비김";
+	}else if(first == "가위" && second == "보" || 
+	  		 first == "바위" && second == "가위" || 
+	  		 first == "보" && second == "바위"){
+		str = "첫번째 사람이 이김";
+		}else {
+		str = "두번째 사람이 이김"	
+	}
+	
+	// 출력내용 구성
+	res = `첫번째 사람 : ${first} <br>`;
+	res += `두번째 사람 : ${second} <br>`;
+	res += `결과 : ${str} <br>`
+	
+	// 출력
+	vres = document.getElementById('res1')
+	vres.innerHTML = res;
+}
+</script>
+</head>
+<body>
+두 사람의 가위바위보를 입력하여 승자를 판별<br><br>
+<input type="button" value="확인" onclick="proc1()">
+<div id="res1"></div>
+</body>
+</html>

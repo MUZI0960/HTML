@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/pulbic.css">
+<style type="text/css">
+div {
+	height: 50px;
+	padding: 20px;
+	border: 2px solid blue;
+}
+</style>
+
+<script type="text/javascript">
+	function proc1() {
+		vinput = window.prompt("입력하세요");
+		document.write("<h1>" + vinput + "</h1>");
+	}
+</script>
+</head>
+<body>
+	<pre>
+함수 정의 형식
+1. function proc1(){}
+2. proc1 = function(){}
+3. 람다 함수 
+proc1 = () => {}
+
+</pre>
+	<input type="button" value="확인" onclick="proc1">
+	<br>
+	<br>
+	<div>Hello</div>
+</body>
+</html>

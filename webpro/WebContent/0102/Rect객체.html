@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/public.css">
+</head>
+<script type="text/javascript">
+// 객체 선언
+const rect = { 
+		garo : 10,
+		sero : 8,
+		
+		getArea : function(){
+			return this.garo * this.sero;
+		},
+		getCircum : function(){
+			return (this.garo + this.sero) * 2;
+		}
+}
+
+proc1 = () =>{
+	// 사각형의 정보를 출력
+	res = `가로 : ${rect.garo}<br>`;
+	res += `세로 : ${rect.sero}<br>`;
+	
+	area = rect.getArea();
+	dule = rect.getCircum();
+	
+	res += `면적 : ${area} `
+	res += `둘레  : ${dule}<br>`
+	
+	//id = res1인 요소를 검색
+	vres = document.getElementById('res1');
+	vres = document.querySelector('#res1');
+	
+	vres.innerHTML = res;
+	
+// 	a = document.getElementById('res1');
+// 	b = document.getElementsByClassName('aa');
+// 	b[0].style. / b[1].style
+// 	b = document.getElementsByClassName('aa')[0]
+// 	b.style
+	
+// 	a=document.querySelector('#res1');
+// 	b=document.querySelector('.aa');		// class=aa인 요소 중 처음 1개만 검색
+// 	b.style.background
+	
+// 	c=document.querySelectorAll('.aa');	// class=aa인 요소 전체를 검색
+// 	c[0].style / c[1].style
+	}
+	
+proc2 = () =>{
+	// 가로 세로 입력
+	vrGaro = prompt("가로값 입력");
+	vrSero = prompt("세로값 입력");	
+	
+	// rect의 속성에 대입
+	rect.garo = vrGaro;
+	rect.sero = vrSero;
+	
+	// 출력
+	res = `가로 : ${rect.garo}`;
+	res += `세로  : ${rect.sero}<br>`;
+	
+	res += `면적 : ${rect.getArea()}<br>`;
+	res += `둘레  : ${rect.getCircum()}<br>`;
+	
+	document.querySelector('#res2').innerHTML = res;
+	document.getElementById('res2').innerHTML = res;
+			
+}
+
+</script>
+<body>
+<pre>
+const rect = { key:value, key:value, key:function(){ }, key:function(){ } }
+</pre>
+
+<div class="box">
+	생성된 Rect객체의 정보를 출력<br><br>
+	<input type="button" value="확인" onclick="proc1()">
+	<br>
+	<div id="res1"></div>
+</div>
+
+<div class="box">
+	가로, 세로 값을 입력받아 rect객체의 속성값으로 대입한다<br>
+	면적 둘레 계산 후 출력<br><br>
+	<input type="button" value="확인" onclick="proc2()">
+	<br>
+	<div id="res2"></div>
+</div>
+</body>
+</html>
+
+
+
+

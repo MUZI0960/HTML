@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+div {
+	height: 100px;
+	padding: 10px;
+	margin: 20px;
+	border: 1px dotted green;
+}
+input[type=button]{
+	width: 100px;
+	height: 40px;
+	background: skyblue;
+	font-size: 1.2em;
+	border-radius: 20px; 
+	border: 1px solid blue;
+}
+</style>
+<script type="text/javascript">
+proc1 = () =>{
+	// 입력
+	su1 = parseInt(prompt("수1 입력", "1-100"));
+	su2 = parseInt(prompt("수2 입력", "1-100"));
+	
+	op = prompt("연산자 입력");
+	
+	if(op == "+"){
+		calc = su1 + su2;
+	}else if (op == "*") {
+		calc = su1 * su2;
+	}else if (op == "-") {
+		calc = su1 - su2;
+	}else if (op == "/") {
+		calc = su1 / su2;
+		calc = calc.toFixed(2); //소수점 2자리까지 출력
+	}
+	switch(op){
+	case "+" : 
+		calc = su1 + su2;
+		break;
+	case "-" :
+		calc = su1 - su2;
+		break;
+	case "*" :
+		calc = su1 * su2;
+		break;
+	case "/" :
+		calc = su1 / su2;
+		calc = calc.toFixed(2);
+		break;
+	
+	}
+	// 출력 내용
+	str = `첫번째 수 : ${su1} <br>`;
+	str += `두번째 수 : ${su2} <br>`;
+	str += `연산자 : ${op} <br><br>`;
+	
+	str += `${su1} ${op} ${su2} = ${calc}`;
+	
+	// 출력
+	document.getElementById('res1').innerHTML = str;
+	
+	}
+</script>
+</head>
+<body>
+두 수와 연산자를 입력받아 결과를 출력한다.<br>
+나눗셈 수행 시 실수 값이 발생<br>
+실수값의 소숫점 설정  Number타입의 객체.toFixed(자릿수)<br>
+calc = calc.toFixed(2)<br><br>
+<input type="button" value="확인" onclick="proc1()">
+<br><br>
+<div id="res1"></div>
+</body>
+</html>

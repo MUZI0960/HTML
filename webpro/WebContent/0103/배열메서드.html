@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/public.css">
+<style type="text/css">
+input[type=button]{
+	width: 150px;
+}
+</style>
+
+<script type="text/javascript">
+const arr = ["사과", "딸기", "복숭아", "사과", "체리", "수박", "사과", "파인애플"];
+
+proc1 = () =>{
+
+	// 검색할 과일 입력
+	vfr = prompt("검색할 과일 입력");
+	
+	//입력한 과일이 몇 번째 있는 지 검색
+	idx = arr.indexOf(vfr); 
+	
+	str = "";
+	
+	if(idx < 0) {
+		str += `입력한 ${vfr}은(는) 없는 과일 입니다.`;
+	}else {
+		str += `입력한 ${vfr}은(는) ${idx}번째 있습니다.`;
+	}
+	
+	document.querySelector("#res1").innerHTML = str;
+	
+}
+
+proc2 = () =>{
+	
+	// 검색할 과일 입력
+	vfr = prompt("검색할 과일 입력");
+	
+	//입력한 과일이 몇 번째 있는 지 검색
+	idx = arr.lastIndexOf(vfr); 
+	
+	str = "";
+	
+	if(idx < 0) {
+		str += `입력한 ${vfr}은(는) 없는 과일 입니다.`;
+	}else {
+		str += `입력한 ${vfr}은(는) ${idx}번째 있습니다.`;
+	}
+	
+	document.querySelector("#res2").innerHTML = str;
+	
+	
+}
+
+proc3 = () =>{
+	vfr = prompt("검색할 과일 입력");
+	idx = 0;
+	str = `입력한 ${vfr}은(는)<br>`;
+	flag = false;
+	
+	while(true){
+		
+		idx = arr.indexOf(vfr,idx);
+		if(idx < 0) {
+			// 처음부터 없는 것 또는 있다가 없는 것
+			if(!flag) 
+				str += `없습니다`;
+			else 
+				str += `있습니다.`;
+			break;
+		}
+		
+		str += `${idx}번째<br>`;
+		flag = true;
+		idx++;
+	}
+
+	document.querySelector('#res3').innerHTML = str;
+	
+	
+}
+
+proc4 = () =>{
+	
+	str = `원래 배열 : ${arr}<br>`;
+	arr.push("자두", "오렌지", "키위");
+	str += `추가 후 배열 : ${arr}<br>`;
+
+	document.querySelector('#res4').innerHTML = str;
+}
+
+proc5 = () =>{
+	
+	str = `원래 배열 : ${arr}<br>`;
+	vpop = arr.pop();
+	str += `제거 후 배열 : ${arr}<br>`;
+	str += `제거된 과일 : ${vpop}`;
+	
+	document.querySelector('#res5').innerHTML = str;	
+}
+
+proc6 = () =>{
+	
+	str = `원래 배열 : ${arr}<br>`;
+	
+	narr = arr.slice(1,6); // 1부터 5까지
+	str += `arr.slice(1,6) : ${arr}<br>`;
+	
+	str += `arr.slice(1,6) 결과 배열 : ${narr}<br>`;
+	
+	document.querySelector('#res6').innerHTML = str;
+	
+}
+
+proc7 = () =>{
+	str = `원래 배열 : ${arr}<br>`;
+	
+	// 3번째 위치에서 1개 삭제해라
+// 	arr.splice(3, 1);
+
+	// 1번 예시 - 특정 위치서 삭제
+// 	str += `삭제 후 배열 : ${arr}<br>`;
+//-----------------------------------------
+	
+	// 2번 예시 - 특정 위치 삭제하고 추가
+	// 2번째 위치에서 2개를 삭제 후 100,200,300을 삽입
+// 	arr.splice(2, 2, 100, 200, 300);
+// 	str += `변경 후 : ${arr}<br>`;
+//-----------------------------------------
+	
+	//3번 예시 - 삭제 없이 특정 위치서 추가만
+	// 5번째 위치에 1,2,3,4,5를 삽입
+	arr.splice(5,0,1,2,3,4,5)
+ 	str += `변경 후 : ${arr}<br>`;
+
+	document.querySelector('#res7').innerHTML = str;
+}
+
+proc8 = () =>{
+	
+	str = `arr배열의 길이 : ${arr.length}<br>`;
+	
+	for(x in arr){
+		str += `arr[${x}] : ${arr[x]}<br>`
+	}
+	
+	document.querySelector('#res8').innerHTML = str;
+	
+	vs = arr.join(); 	// 배열을 문자열로 변환
+	
+	str = "vs문자열의 길이 : " + vs.length + "<br>";
+	for(i in vs){
+		str += `arr[${i}] : ${vs[i]}<br>`
+	}
+	document.querySelector('#res8').innerHTML += str;
+}
+</script>
+
+</head>
+<body>
+
+<div class="box">
+	<br><br>
+	<input type="button" value="indexOf" onclick="proc1()">
+	<input type="button" value="lastIndexOf" onclick="proc2()">
+	<input type="button" value="indexOf_start" onclick="proc3()">
+	<br>
+	<div id="res1"></div>
+	<div id="res2"></div>
+	<div id="res3"></div>
+</div>
+
+<div class="box">
+	<br><br>
+	<input type="button" value="push" onclick="proc4()">
+	<input type="button" value="pop" onclick="proc5()">
+	<br>
+	<div id="res4"></div>
+	<div id="res5"></div>
+</div>
+
+<div class="box">
+	<br><br>
+	<input type="button" value="slice" onclick="proc6()">
+	<input type="button" value="splice" onclick="proc7()">
+	<br>
+	<div id="res6"></div>
+	<div id="res7"></div>
+</div>
+
+<div class="box">
+	<br><br>
+	<input type="button" value="join" onclick="proc8()">
+	<br>
+	<div id="res8"></div>
+</div>
+
+</body>
+</html>

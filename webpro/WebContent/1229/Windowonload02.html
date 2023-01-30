@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<link rel="stylesheet" href="../css/public.css">
+
+<script type="text/javascript">
+/*
+function add(a, b) {
+   return a + b;
+}
+function sub(a, b) {
+   return a - b;
+}
+*/
+add = (a,b) =>{
+	return a + b;
+}
+
+sub = (a,b) =>{
+	return a - b;
+}
+
+window.onload = () =>{
+//window.onload = function() {
+   
+   // 입력
+   su1 = parseInt(prompt("수 1 입력"));
+   su2 = parseInt(prompt("수 2 입력"));
+   addRes = add(su1, su2);
+   subRes = sub(su1, su2);
+   
+   // id = res1을 검색 - 출력
+   vres = document.getElementById('res1');
+   
+   // 출력내용 구성 
+   //str = su1 + " + " + su2 + " = " + addRes + "<br>";
+   //str += su1 + " - " + su2 + " = " + subRes + "<br>";
+   
+   // 템플릿 문자열로 출력 내용 구성
+   str = `${su1} + ${su2} = ${addRes} <br>`;
+   str += `${su1} - ${su2} = ${subRes} <br>`;
+   
+   // 출력
+   vres.innerHTML =str;
+}
+</script>
+<style type="text/css">
+div{
+   height: 100px;
+   border: 1px solid blue;
+</style>
+</head>
+<body>
+<pre>
+람다함수(화살표함수) : sub = (a,b) => { }
+템플릿 리터럴 - 백틱 (`)을 이용한 문자열
+su1 + " + " + su2 + " = " + addRes + "&lt;br>";
+</pre>
+<div id="res1"></div>
+</body>
+</html>
+
+
+
+
+
+

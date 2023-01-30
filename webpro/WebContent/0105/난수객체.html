@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/public.css">
+<script type="text/javascript">
+const rand = parseInt(Math.random() * 100 + 1);
+var count = 0;
+
+proc1 = () =>{
+	
+	// id=su를 검색해서 값을 가져오기 => .value
+	suvalue = document.getElementById('su').value;
+	count++;
+	vstr = "";
+	// 비교 
+	if(suvalue == rand){
+		hint = "정답입니다.";
+		vstr = `[입력 횟수 : ${count}]<br>`;
+	}else if (suvalue > rand) {
+		hint = "더 작은 수로 입력해야 합니다.";
+	}else {
+		hint = "더 큰 수로 입력해야 합니다.";
+	}
+	
+	// 출력내용
+	vstr += `${hint}`;
+	
+	document.getElementById('res1').innerHTML = vstr;
+}
+
+proc2 = () =>{
+	
+	const arr = ["가위", "바위", "보"]; 	// arr[0] arr[1] arr[2]
+	
+	var arand = parseInt(Math.random() * arr.length);
+	
+	com = arr[arand];
+	
+	user = prompt("가위 바위 보 입력");
+	
+	// 비교
+	if(com == user){
+		res = "비김";
+	}else if (user == "가위" && com == "보"|| 
+			  user == "바위" && com == "가위"||
+			  user == "보" && com == "바위") {
+		res = "user가 이김";
+	}else {
+		res = "com이 이김";
+	}
+	
+	// 출력 내용
+	vstr = `user : ${user}<br>`;
+	vstr += `com : ${com}<br>`;
+	vstr += res;
+	
+}
+
+proc3 = () =>{
+	
+// 	lotto = "";
+	
+// 	for(i = 0; i<6; i++){
+// 		lotto += parseInt(Math.random() * 45 + 1) + " "; 	// 
+// 	}
+// 	document.getElementById('res3').innerHTML = lotto;
+
+	lotto = []; 	//lotto = new Array();
+	
+	lottoRnd = parseInt(Math.random() * 45 + 1);
+	
+	// 배열의 요소 값과 비교 
+	
+	while(true){
+	idx = lotto.indexOf(lottoRnd);
+	if(idx < 0){
+		lotto.push(lottoRnd);
+	}
+	if(lotto.length >= 6) break;
+	
+	}
+	document.getElementById('res3').innerHTML = lotto;
+
+}
+
+
+</script>
+</head>
+<body>
+
+<div class="box">
+난수를 발생하여 숫자를 맞추는 프로그램
+	<br><br>
+	<input type="text" id="su">
+	<input type="button" value="확인" onclick="proc1()">
+	<br>
+	<div id="res1"></div>
+</div>
+
+<div class="box">
+가위 바위 보 게임을 할 수 있는 프로그램을 작성하시오. <br>
+(컴퓨터는 랜덤, 사용자는 prompt로 입력 받아서 처리)
+	<br><br>
+	<input type="button" value="확인" onclick="proc2()">
+	<br>
+	<div id="res2"></div>
+</div>
+
+<div class="box">
+로또 번호를 생성하는 프로그램을 작성하시오.<br>
+    (1번 ~ 45번 중 6개의 번호를 추첨) 
+
+	<br><br>
+	<input type="button" value="확인" onclick="proc3()">
+	<br>
+	<div id="res3"></div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/public.css">
+<script type="text/javascript">
+today = new Date();
+
+proc1 = () =>{
+	
+	// id = "pdate"를 검색 - 값을 가져온다. (value)
+	selvalue = document.querySelector('#pdate').value;
+	
+	// value를 이용하여 Date객체 생성
+	selday = new Date(selvalue);
+	
+	// today와 selday의 getTime() 구해서 빼기 - millisec 값 리턴
+	curr = today.getTime();
+	sel = selday.getTime();
+	
+	times = today.getTime() - selday.getTime();
+	
+	if(times < 0){
+		alert("날짜 선택 오류입니다.");
+		return false;
+	}
+	
+	// 실제 날수 구하기
+	
+	time = Math.floor(times/ 1000/ 60/ 60/ 24); 
+	
+	
+	// 날수 비교
+	if(time > 7){
+		res = `교환이 가능합니다.`;
+	}else {
+		res = `교환이 불가능합니다.`;
+	}
+	
+	// 출력내용 작성
+	
+	str = " 오늘 : " + today.toLocaleDateString() + "<br>";
+	str += " 구입 날짜 : " + selday.toLocaleDateString() + "<br>";
+	str += time + "일이 경과 했으므로 "  + res + "<br>";
+	str += res;
+	// 출력
+	
+	document.querySelector('#res1').innerHTML = str;
+}
+
+proc2 = () =>{
+	
+	// 500일에 대한 millisec값 구하기
+	day500 = 500 * 1000 * 60 * 60 * 24; 	// 500일에 대한 millisec값
+	
+	// 오늘의 millisec값 + 500일에 대한 millisec값 
+	vres = today.getTime() + day500;
+	
+	vdate = new Date(vres);
+	
+	// 출력 내용
+	res = `오늘 : ${today.toLocaleDateString()} <br>`;
+	res += `500일 후 : ${vdate.toLocaleDateString()} <br>`;
+	
+	document.querySelector('#res2').innerHTML = res;
+	
+}
+
+</script>
+</head>
+<body>
+
+<div class="box">
+	날짜를 선택하고 7일이 경과 했는 지 체크<br>
+	교환 가능 여부를 출력<br>
+	오늘 이후 날짜 출력 시 오류 메세지 경고창 <br>
+	구입날짜 <input type="date" id="pdate">
+	<input type="button" value="확인" onclick="proc1()">
+	<br>
+	<div id="res1"></div>
+</div>
+
+<div class="box">
+	오늘로부터 500일 이후의 날짜를 구하기<br><br>
+	구입날짜 <input type="date" id="pdate">
+	<input type="button" value="확인" onclick="proc2()">
+	<br>
+	<div id="res2"></div>
+</div>
+
+</body>
+</html>

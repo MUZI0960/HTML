@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/public.css">
+<script type="text/javascript">
+
+var today = new Date();
+var date1 = new Date(10000);
+var date2 = new Date("1999.5.13");
+var date3 = new Date(1999, 5-1, 13);
+
+proc1 = () =>{
+	
+	str = today + "<br>";
+	str += date1 + "<br>";
+	str += date2 + "<br>";
+	str += date3 + "<br>";
+	
+	document.querySelector('#res1').innerHTML = str;
+	
+	// toLocaleString() : 지역에 맞게 변환
+	let vtoday = today.toLocaleString();
+	let vdate1 = date1.toLocaleString();
+	let vdate2 = date2.toLocaleString();
+	let vdate3 = date3.toLocaleString();
+	
+	str = vtoday + "<br>";
+	str += vdate1 + "<br>";
+	str += vdate2 + "<br>";
+	str += vdate3 + "<br>";
+	
+	document.querySelector('#res1').innerHTML += str;
+}
+
+proc2 = () =>{
+	
+	// 배열 사용하는 방법
+	dayarr = ["일요일","월요일","화요일","수요일","목요일","금요일","토요일"];
+	
+	vdays = today.getDay(); 	// 0 ~ 6 리턴
+	res = dayarr[vdays];
+	
+	
+	// 스위치 사용하는 방법
+// 	switch(vdays){
+// 	case 0 : 
+// 		res = "일요일";
+// 		break;
+// 	case 1:
+// 		res = "월요일";
+// 		break;
+// 	case 2:
+// 		res = "화요일";
+// 		break;
+// 	case 3:
+// 		res = "수요일";
+// 		break;
+// 	case 4:
+// 		res = "목요일";
+// 		break;
+// 	case 5:
+// 		res = "금요일";
+// 		break;
+// 	case 6:
+// 		res = "토요일";
+// 		break;
+// 	}
+	
+	str = "오늘은 " + today.toLocaleString() + "<br>";
+	str += today.toLocaleDateString() + "<br>";
+	str += res + "입니다.";
+	
+	document.querySelector('#res2').innerHTML += str;
+	
+	
+	
+}
+
+proc3 = () =>{
+	
+	myday = new Date(1996,9-1,6);
+	
+	// today의 getTime() myday의 getTime() - millisec를 리턴
+	curr = today.getTime();
+	my = myday.getTime();
+	
+	// times = today - myday // millisec를 리턴
+	time = curr - my;
+	
+	console.log(curr,my,time);
+	
+	// millisec 실제 초 구하기 / 1000 
+	myear = time/ 1000/ 60/ 60/ 24/ 365;
+	
+	// 출력
+	str = `오늘 : ${today.toLocaleDateString()}<br>`;
+	str += `내 생일 : ${myday.toLocaleDateString()}<br>`;
+	str += `태어난 날 부터 오늘까지 ${myear}년째 살고 있어요<br>`;
+	
+	document.querySelector('#res3').innerHTML = str;
+	
+}
+
+</script>
+</head>
+<body>
+
+<div class="box">
+	<br><br>
+	<input type="button" value="확인" onclick="proc1()">
+	<br>
+	<div id="res1"></div>
+</div>
+
+<div class="box">
+	요일 구하기 - getDay() : 0 ~ 6 으로 리턴한다.
+	<br><br>
+	<input type="button" value="확인" onclick="proc2()">
+	<br>
+	<div id="res2"></div>
+</div>
+
+<div class="box">
+	경과시간 구하기 : getTime() - millisec를 리턴<br>
+	리턴된 millisec값으로 실제 경과 시간(초, 분, 시간, 일, 년)을 구한다.
+	<br><br>
+	<input type="button" value="확인" onclick="proc3()">
+	<br>
+	<div id="res3"></div>
+</div>
+</body>
+</html>

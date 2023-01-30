@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<link rel="stylesheet" href="../css/public.css" type="text/css">
+
+<style>
+span {
+	display : inline-block;
+	width: 100px;
+	height: 30px;
+	/* border-bottom: 1px dotted blue; */
+}
+form {
+	width : 300px;
+	height : 200px;
+	border: 1px solid blue;
+	padding: 20px;
+}
+
+</style>
+</head>
+<body>
+<pre>
+전송을 하면 서버의 실행페이지를 요청해서 실행 후 응답 받음
+&lt;form action="formsend1.jsp" method="post">
+action="formsend1.jsp : 전송 시 서버내의 실행 페이지 이름 - jsp 또는 서블릿 클래스 파일
+method="post" : 전송 방식
+</pre>
+
+  <form action="formsend1.jsp" method="post">
+	<span>이름 </span>
+	<input type="text" name="name"><br>
+	
+	<span>비밀번호 </span>
+	<input type="password" name="pass"><br>
+	
+	<span>아이디</span>
+	<input type="text" name="id"><br>
+	
+	<span>전화번호 </span>
+	<input type="text" name="tel"><br>
+	
+	<span>이메일 </span>
+	<input type="text" name="email"> <br>
+	
+	<input type="submit" value="전송">
+  </form> 
+</body>
+</html>

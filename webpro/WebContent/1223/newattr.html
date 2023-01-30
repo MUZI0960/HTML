@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/public.css" type="text/css">
+
+<style>
+pre {
+	background-color: skyblue;
+}
+</style>
+</head>
+<body>
+<pre style="background-color : yellow;">
+데이터 형식 - pattern
+숫자	: \d{3}	\d{3,4} [0-9]+ 	[0-9]{3}
+영문자 : [a-z]+ [A-Z]{5}
+한글 : [ㄱ-ㅎ]+	[가-힣]{2,6}
+</pre>
+
+<form action="newattr.jsp" method="post">
+
+	<input type="text" placeholder="아이디" value="a001" disabled name="id"><br>
+	<input type="text" placeholder="비밀번호" name="pass"><br>
+	<input type="tel" placeholder="010-1234-5678" pattern="(010)-[0-9]{4}-[0-9]{4}" name="tel"><br>
+	<input type="submit">
+</form>
+
+</body>
+</html>

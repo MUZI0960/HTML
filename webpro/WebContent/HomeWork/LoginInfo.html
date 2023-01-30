@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<style>
+header, nav{
+	border: 1px solid white;
+	margin: 10px;
+}
+
+header{
+	background: linear-gradient(132deg, rgba(81,122,207,1) 0%, rgba(34,124,112,1) 30%, rgba(159,191,146,1) 98%);
+	height: 100px;
+	
+}
+
+header h1{
+	letter-spacing: 5px;
+	margin-top: 30px;
+	margin-left: 10%;
+	font-family: 'Do Hyeon', sans-serif;
+}
+h3{
+	text-align: center;
+	font-family: 'Do Hyeon', sans-serif;
+	
+}
+
+nav{
+	background-color: #404258;
+	color: white;
+	font-size: 1.2em;
+	font-family: 'Do Hyeon', sans-serif;
+	
+}
+
+#nav_ul{
+   list-style:none;
+   display: flex;
+   justify-content: space-around;
+   margin-top: 10px;
+   }
+
+form{
+	width: 500px;
+	border: 1px solid white;
+	padding: 30px;
+	margin: 50px auto;
+	background-color: rgb(233, 236, 239);
+	font-family: 'Do Hyeon', sans-serif;
+}
+
+span {
+	display: inline-block;
+	width: 150px;
+	height: 30px;
+	margin-left: 60px;
+	font-size: 1.2em;
+}
+h2{
+	text-align: center;
+	margin-bottom: 30px;
+}
+#button{
+	display: flex;
+	justify-content: space-around;
+}
+footer{
+	text-align: center;
+	background: linear-gradient(132deg, rgba(81,122,207,1) 0%, rgba(34,124,112,1) 30%, rgba(159,191,146,1) 98%);
+	height: 100px;
+	padding: 30px;
+}
+
+</style>
+</head>
+<body>
+
+<header>
+<h1>DDIT 쇼핑</h1>
+</header>
+
+<nav>
+<ul id="nav_ul">
+	<li><a>HOME</a></li>
+	<li><a>ABOUT US</a></li>
+	<li><a>NEWS</a></li>
+	<li><a>My Account</a></li>
+	<li><a>Contacts</a></li>
+</ul>
+</nav>
+
+<form action="">
+	<h2>회원가입 정보</h2>
+	<span>아이디</span> <input type="text" required="required"><br>
+	<span>패스워드</span> <input type="text" required="required"><br>
+	<span>패스워드 확인</span> <input type="text" required="required"><br>
+	<span>이름</span> <input type="text" required="required"><br>
+	<span>휴대폰번호</span> <input type="text"><br>
+	<span>이메일</span> <input type="email" name="useremail"><br>
+	<span>생일</span> <input type="date" name="birthday"><br>
+	<span>홈페이지</span> <input type="text"><br>
+	<span>성별</span> <input type="radio" name="gender" checked>여자 <input type="radio" name="gender">남자
+	<br><br>
+	<div id="button">
+	<button type="button" class="btn btn-outline-dark">Submit</button>
+	<button type="reset" class="btn btn-outline-dark">reset</button>
+	</div>
+</form>
+<footer><h3>Made By ddit 2211_김지연</h3></footer>
+
+</body>
+</html>

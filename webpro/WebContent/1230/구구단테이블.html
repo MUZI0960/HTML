@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+div {
+	height: 450px;
+	border: 1px dotted black;
+	padding: 20px;
+}
+table {
+	border: 2px solid blue;
+	border-spacing: 10px;
+}
+td {
+	width: 30px;
+	height: 30px;
+	text-align: center;
+}
+</style>
+<script type="text/javascript">
+proc1 = () =>{
+	
+	str = "<table border='1'>";
+	for(let i = 1; i<10; i++){
+		str+= "<tr>";
+		for(let k = 1; k<10; k++){
+			//str += "<td>" +(i*k) + "</td>";
+			str += `<td> ${i*k} </td>`;
+		}
+		str +="</tr>";
+	}
+	str += "</table>";
+	
+	// 출력 - 출력장소 검색
+	//vdiv = document.getElementById('res1');
+	//vdiv.innerHTML = str;
+	document.getElementById('res1').innerHTML = str;
+	
+}
+</script>
+
+</head>
+<body>
+<input type="button" value="확인" onclick="proc1()">
+<br><br>
+<div id="res1"></div>
+</body>
+</html>

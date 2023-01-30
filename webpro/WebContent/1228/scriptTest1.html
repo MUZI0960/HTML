@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<script type="text/javascript">
+ <!-- var vinput = prompt("입력하세요"); 전역변수 -->	
+ <!--     vinput = prompt("입력하세요"); 전역변수 -->	
+<!-- 함수 외에 서는 var 유무 상관없이 전역변수 -->
+function proc1() {
+// 	 vinput = prompt("입력하세요"); 전역
+	 // 함수 내에서는 var 유무에 따라 전역, 지역 차이
+ 	var vinput = prompt("입력하세요"); // 지역
+	
+	console.log(vinput); // 콘솔창에 출력
+	window.alert(vinput); // alert창에 출력
+	
+	
+	//div에 출력 - div 검색하기
+	vdiv= document.getElementsByTagName('div');
+	vdiv[0].innerText = vinput; // 덮어쓰기되어 한번만 출력됨
+	
+	vdiv= document.getElementsByTagName('div')[0];
+	vdiv.innerText = vinput;
+	
+	var a = "홍길동";
+	
+	var str = "korea" + a + "환영합니다";
+	document.getElementById('res1').textContent = str;
+	
+	str = "<h1>" + vinput + "</h1>";
+	vdiv.innerHTML = str;
+	
+}
+
+function aa() {
+	
+}
+
+function bb() {
+	
+}
+
+</script>
+<style type="text/css">
+div {
+	border: 3px solid black;
+	height: 50px;
+	padding: 50px;
+	
+}
+</style>
+
+</head>
+<body>
+<input type="button" value="확인" onclick="proc1()">
+
+<br><br>
+<p>입력받은 값을 출력하세요</p>
+<div id = "res1"></div>
+
+</body>
+</html>

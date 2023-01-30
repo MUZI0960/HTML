@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/public.css">
+</head>
+
+<script type="text/javascript">
+proc1 = (but) =>{
+	
+	but.style.display = "none";
+	vres1 = document.getElementById('res1');
+	
+	a = setInterval(function(){
+		
+	vchild = vres1.firstChild;
+	vres1.appendChild(vchild);
+		
+	}, 300);
+	
+}
+
+proc2 = (but) =>{
+	
+	clearInterval(a);
+}
+
+</script>
+
+<style>
+img {
+	width: 100px;
+	height: 100px;
+}
+
+</style>
+
+<body>
+
+<div class="box">
+	<br><br>
+	<input type="button" value="확인" onclick="proc1(this)">
+	<input type="button" value="종료" onclick="proc2(this)">
+	<br>
+	<div id="res1">
+		<img alt="coffee1.jpg" src="../images/coffee1.jpg">
+		<img alt="flower-1.jpg" src="../images/flower-1.jpg">
+		<img alt="Koala.jpg" src="../images/Koala.jpg">
+		<img alt="spongebob.png" src="../images/spongebob.png">
+		<img alt="Tulips.jpg" src="../images/Tulips.jpg">
+		<img alt="국화5.jpg" src="../images/국화5.jpg">
+		<img alt="딸기스무디.jpg" src="../images/딸기스무디.jpg">
+	</div>
+</div>
+</body>
+</html>

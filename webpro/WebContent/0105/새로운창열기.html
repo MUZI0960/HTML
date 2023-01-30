@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/public.css">
+<script type="text/javascript">
+proc1 = () =>{
+	
+	a = window.open("난수객체.html", "난수객체", "top=150 left=200 width= 500 height = 400");
+	
+// 	a.resizeTo(100,100);
+// 	a.resizeBy(100,100);
+// 	a.moveTo(100,100);
+	a.moveBy(100,100);
+}
+
+proc2 = ()=>{
+	
+	window.open("sub.html", "winsub", "width = 400 height = 500 left = 200 top = 300");
+	// 절대경로 : http://localhost/webpro/0105/sub.html
+}
+
+</script>
+
+</head>
+<body>
+
+<div class="box">
+	새로운 창을 연다<br>
+	window.open(url, target/name, spec)<br><br>
+	<input type="button" value="확인" onclick="proc1()">
+	<br>
+	<div id="res1"></div>
+</div>
+
+<div class="box">
+	새로운 창을 연다<br>
+	window.open(url, target/name, spec)<br><br>
+	<input type="button" value="확인" onclick="proc2()">
+	<br>
+	<div id="res2">
+</div>
+
+</body>
+</html>

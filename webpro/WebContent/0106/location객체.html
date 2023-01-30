@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/public.css">
+
+<script type="text/javascript">
+
+proc1 = () =>{
+	
+	location.href = "http://localhost/webpro/webContent/0105/timeout_interval.html";
+	
+	
+}
+
+</script>
+
+</head>
+<body>
+
+<div class="box">
+	스크립트에서 location.href="url주소"를 이용<br><br>
+	<input type="button" value="확인" onclick="proc1()">
+	<br>
+	<div id="res1"></div>
+</div>	
+
+<div class="box">
+	클릭 시  onclick="location.href="url주소"<br><br>
+	<input type="button" value="확인" 
+		   onclick='location.href = "http://localhost/webpro/0105/난수객체.html"'>
+	<br>
+	<div id="res2"></div>
+</div>
+
+<div class="box">
+	a태그에서 location.href="url주소"를 이용<br><br>
+	<a href="http://localhost/webpro/0105/난수객체.html">기본방식</a>&nbsp;&nbsp;&nbsp;
+	<a 
+	   onclick="location.href='http://localhost/webpro/0104/Date객체2.html'">onclick실행 - location</a>&nbsp;&nbsp;&nbsp;
+	<a href="#" onclick="proc1()">onclick실행 - javascript</a>&nbsp;&nbsp;&nbsp;
+	<a href="javascript:proc1()">자바스크립트로</a>&nbsp;&nbsp;&nbsp;
+	<br>
+	<div id="res2"></div>
+</div>
+
+
+	
+</body>
+</html>
+
+

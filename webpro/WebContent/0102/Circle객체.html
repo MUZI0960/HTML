@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/public.css">
+<script type="text/javascript">
+const circle = { }; // 객체 선언 - 빈 객체 - 속성과 메서드가 정의되지 않음
+
+proc1 = () =>{
+	// 반지름 입력
+	vcRad = prompt("반지름 입력하세요");
+	console.log(parseInt(vcRad)+parseInt(vcRad));
+	console.log(vcRad+vcRad);
+	// 이름 입력
+	vcName = prompt("이름 입력");
+	
+	// circle.rad 속성, circle.name 속성에 대입
+	circle.rad = vcRad;
+	circle.name = vcName;
+	
+	//메서드 추가
+	circle.getArea = function(){
+		return this.rad * this.rad * Math.PI;
+	}
+	circle.getCircum = function() {
+		return 2 * Math.PI * this.rad;
+	}
+	
+	// 출력
+	str = `이름 : ${circle.name} <br>`;
+	str += `반지름 : ${circle.rad} <br>`;
+	str += `면적 : ${circle.getArea()} <br>`
+	str += `둘레 : ${circle.getCircum()} <br>`
+	
+	document.querySelector('#res1').innerHTML = str;
+	document.getElementById('res1').innerHTML = str;
+	
+}
+</script>
+</head>
+<body>
+<pre>
+const circle = { };
+
+나중에 필요에 의해서 동적으로 속성이나 메서드 추가할 수 있다.
+
+</pre>
+<div class="box">
+	<br><br>
+	<input type="button" value="확인" onclick="proc1()">
+	<br>
+	<div id="res1"></div>
+</div>
+</body>
+</html>

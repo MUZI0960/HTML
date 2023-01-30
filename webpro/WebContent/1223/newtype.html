@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<style>
+
+label {
+	display: inline-block;
+	width: 80px;
+	height: 30px;
+}
+
+form {
+	border: 1px dotted blue;
+	padding: 10px;
+	width: 50%;
+	margin: 20px auto;
+}
+
+</style>
+
+<script type="text/javascript">
+
+function changeColor(element) {
+	// element는 매개변수 - input type = color인 input 객체를 받은 변수 
+	// element의변경된 색상의 값을 가져온다. - html 요소에 접근
+	
+	alert(element.value);
+	//form태그의 배경색을 변경하시오.
+	vform = document.getElementsByTagName('form')[0];
+	vform.style.backgroundColor = element.value;
+	
+  //vform[0] = document.getElementsByTagName('form');...?
+		  
+	}	
+/*	function chandeColor{
+	// html 요소에 접근 검색
+	vcolor = document.ff.color
+	
+	} */
+
+</script>
+
+</head>
+<body>
+
+<pre>
+document.getElementById('aaaa');
+document.getElementsByClassName('aaaa')[0];
+document.getElementsByTagName('input')[0];
+document.ff.color
+document.getElementsByName('color');
+
+document.querySelector('#aa');
+document.querySelector('.aa');
+document.querySelectorAll('.aa');
+
+document.querySelector('input');
+document.querySelectorAll('input');
+</pre>
+
+	<form name="ff" action="newtype.jsp" method="post">
+		
+		<label>색상지정</label>
+		<input type="color" name="color" onchange="changeColor(this)"><br>
+		
+		<label>이름</label>
+		<input type="text" name="name"><br>
+		
+		<label>생일</label>
+		<input type="date" name="bir"><br>
+		
+		<label>전화번호</label>
+		<input type="text" name="tel"><br>
+
+		<label>키</label>
+		<input type="number" min="150" max="200" value="180" step="10"><br>
+		
+		<label>이메일</label>
+		<input type="text" name="email"><br><br>
+		
+		<input type="submit">
+		<button type="submit">전송</button>
+		<input type="image" src="../images/check.png" alt="check.png">
+		<button>전송</button> 
+		
+	</form>
+</body>
+</html>
+
+
+
+
+
+
+
+
+

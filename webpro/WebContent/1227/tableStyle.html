@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+table {
+	border: 3px solid #556B2F;
+	margin: 10px;
+}
+th{
+	height: 50px;
+	background-color: #9ACD32;	
+}
+td{
+	width: 200px;
+	height: 50px;
+	/*text-align: center;*/
+}
+
+table#tab1{ /* table #tab1 --> 띄어쓰기 하면 X (띄어쓰기는 부모자식관계만)*/
+	border-collapse: collapse; 
+}
+table#tab2 {
+	border-spacing: 10px; 
+	empty-cells: hide;
+}
+</style>
+</head>
+<body>
+<table id="tab1" border="1">
+	<tr>
+		<th>제목1</th>
+		<th>제목2</th>
+		<th>제목3</th>
+	</tr>
+	<tr>
+		<td>1</td>
+		<td>2</td>
+		<td>3</td>
+	</tr>
+	<tr>
+		<td>1</td>
+		<td>2</td>
+		<td>3</td>
+	</tr>
+	<tr>
+		<td>1</td>
+		<td>2</td>
+		<td>3</td>
+	</tr>
+</table>
+
+<table id="tab2" border="1">
+	<tr>
+		<td>1</td>
+		<td>2</td>
+		<td>3</td>
+	</tr>
+	<tr>
+		<td>1</td>
+		<td>2</td>
+		<td>3</td>
+	</tr>
+	<tr>
+		<td>1</td>
+		<td>2</td>
+		<td></td>
+	</tr>
+</table>
+</body>
+</html>

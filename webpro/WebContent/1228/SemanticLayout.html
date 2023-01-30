@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+header,footer,section,article,aside {
+/* 	border: 1px solid black; */
+	margin: 5px;
+	border-radius: 10px; 
+}
+header{
+	text-align: center;
+	padding: 10px;
+	background-color: yellow;
+	
+}
+footer{
+	padding: 20px;
+	text-align: center;
+	background-color: #9999E3; 
+}
+#content{
+	display: flex;
+}
+section{
+	width: 75%;
+/* 	margin: 5px auto; */
+}
+article{
+	height: 43%;
+	margin: 13px;
+	background-color: #9FD4C0;
+	border: 3px dotted green;
+}
+aside{
+	width: 20%;
+	height: 300px;
+	padding: 20px;
+	background-color: #E3999A;
+}
+img {
+	width: 100%;
+	height: 100%;
+}
+p{
+	padding: 10px;
+	margin-left: 10px;
+}
+h2{
+	margin-top: 0px;
+}
+h3{
+	margin-left: 10px;
+}
+a:link{
+	color: pink;
+	text-decoration: none;
+}
+a:visited{
+	color: yellow;
+}
+</style>
+</head>
+<body>
+<header>
+<h1>My Blog Page</h1>
+<p>시멘틱 태그로 만들어진 페이지 입니다.</p>
+</header>
+
+<div id="content">
+	<aside>
+	<h2>Links</h2>
+	<ul>
+	<li><a href="https://www.w3schools.com/">w3schools</a></li>
+	<li><a href="https://www.naver.com/">Naver</a></li>
+	<li><a href="https://www.daum.net/">Daum</a></li>
+	</ul>
+	<figure><img alt="spongebob.png" src="../images/spongebob.png"><br>스폰지밥</figure>
+	
+	</aside>
+	<section>
+		<article>
+		<h3>Semantic Tags</h3>
+		
+		<p>
+		시멘틱 요소(Semantic elements)들은 브라우저에게 요소의 의미나 목적을 명확하게 알려주는 요소이다.
+		레이아웃을 만들때 쓰는 것. 의미가 있는 요소라면 div보다는 시멘틱 태그를 사용해준다.
+		</p>
+		</article>
+		
+		<article>
+		<h3>div와 span</h3>
+		<p>
+		div는 "divide"의 약자로써 페이지를 논리적인 섹션으로 분리하는데 사용되는 태그이다.
+		span요소는 인라인 요소로서 텍스트를 위한 컨테이너로 사용할 수 있다.
+		</p>
+		</article>
+	</section>
+</div>
+<footer>copyright</footer>
+</body>
+</html>
