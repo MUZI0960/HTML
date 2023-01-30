@@ -85,6 +85,5 @@ public class BoardServiceImpl implements IBoardService{
 		num = service.deleteReply(renum);
 		return num;
 	}
-
 	
 }

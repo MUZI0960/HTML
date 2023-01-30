@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+
+<script src="../js/jquery-3.6.3.min.js" type="text/javascript"></script>
+
+<style type="text/css">
+.p1{
+	float: left;
+	width: 70%;
+}
+.p2{
+	float: right;
+	width: 25%;
+}
+.p3{
+	clear: both;
+}
+input[name=reply] {
+	height: 50px;
+	vertical-align: top;
+}
+</style>
+</head>
+
+<body>
+
+<div class="box">
+
+<div class="container mt-3">
+  <h2>Accordion 게시판</h2>
+  
+  <div id="accordion">
+    <div class="card">
+      <div class="card-header">
+        <a class="btn" data-bs-toggle="collapse" href="#collapseOne">
+          Collapsible Group Item #1
+        </a>
+      </div>
+      <div id="collapseOne" class="collapse show" data-bs-parent="#accordion">
+        <div class="card-body">
+			<p class="p1">
+			작성자 <span class="bw">홍길동</span>&nbsp;&nbsp;&nbsp;&nbsp; 
+			이메일 <span class="bm">abc@gmail.com</span>&nbsp;&nbsp;&nbsp;&nbsp;  
+			조회수 <span class="bh">0</span>&nbsp;&nbsp;&nbsp;&nbsp; 
+			날짜 <span class="bd">2023.01.30</span>
+			</p>
+			<p class="p2">
+			 <input type="button" value="수정" name="modify" class="action">
+			 <input type="button" value="삭제" name="delete" class="action">
+			</p>
+			<p class="p3">
+			내용 출력<br>내용보기
+			</p>
+			<p class="p4">
+				<textarea rows="" cols="90"></textarea>
+				<input type="button" value="등록" name="reply" class="action">
+			</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div>
+
+</body>
+</html>

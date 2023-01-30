@@ -58,12 +58,12 @@
    
    <!-- 조회수 증가 -->
    <update id="updateHit" parameterClass="int">
-   	update boardtab hit = hit + 1 where num = #data#
+   	update boardtab set hit = hit + 1 where num = #data#
    </update>
    
    <!-- 글 등록 -->
  	<insert id="insertBoard" parameterClass="boardVO">
- 		insert boardtab
+ 		insert into boardtab 
  		values(boardtab_num_seq.nextval, #subject#, #writer#, #mail#, #password#, #content#, 0, #wip#, sysdate)
 		
 		<selectKey keyProperty="num" resultClass="int">

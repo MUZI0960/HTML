@@ -4,10 +4,13 @@ import java.util.List;
 import java.util.Map;
 
 import kr.or.ddit.board.vo.BoardVO;
+import kr.or.ddit.board.vo.PageVO;
 import kr.or.ddit.board.vo.ReplyVO;
 
 public interface IBoardService {
 
+		public PageVO pageInfo(int page, String stype, String sword);
+	
 		// 글 리스트 - 글 내용 보기 - 조건에 따라서  
 		public List<BoardVO> selectByPage(Map<String, Object> map);
 		
