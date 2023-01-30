@@ -6,6 +6,7 @@ import java.util.Map;
 import kr.or.ddit.board.dao.BoardDaoImpl;
 import kr.or.ddit.board.dao.IBoardDao;
 import kr.or.ddit.board.vo.BoardVO;
+import kr.or.ddit.board.vo.PageVO;
 import kr.or.ddit.board.vo.ReplyVO;
 
 public class BoardServiceImpl implements IBoardService{
@@ -84,6 +85,12 @@ public class BoardServiceImpl implements IBoardService{
 		int num = 0;
 		num = service.deleteReply(renum);
 		return num;
+	}
+
+	@Override
+	public PageVO pageInfo(int page, String stype, String sword) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
 }
