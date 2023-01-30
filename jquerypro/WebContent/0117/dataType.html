@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/public.css">
+<script src="../js/jquery-3.6.3.min.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+
+xhr = new XMLHttpRequest();
+
+$(function(){
+	$('#text').on('click', function(){
+		
+// 		location.href="text.jsp";
+		
+		// 요청
+		xhr.open('get', 'text.jsp', true);
+		xhr.send();
+		
+		// 응답
+		xhr.onreadystatechange = function(){
+			
+			//alert(this.readyState);
+			
+			if(this.readyState == 4 && this.status == 200){
+				res = this.responseText;
+				
+				arr = res.split("/");
+				
+				code = "<ul>";
+				
+				$.each(arr, function(i){
+					code += "<li>" + arr[i] + "</li>";
+				})
+				
+				code += "</ul>";
+				
+				$('#res1').html(code);
+			}
+		}
+	})
+	
+	$('#jobj').on('click', function(){
+
+		// 요청
+		xhr.open('get', 'jobj.jsp', true);
+		xhr.send();
+		
+		// 응답
+		xhr.onreadystatechange = function(){
+			
+			if(this.readyState == 4 && this.status == 200){
+			
+				res = JSON.parse(this.responseText);
+				
+				// 출력 형식 설정
+				code = "<p>아이디 : " + res.id + "</p>";
+				code += "<p>이름 : " + res.name + "</p>";
+				code += "<p>전화번호 : " + res.tel + "</p>";
+				code += "<p>주소 : " + res.addr + "</p>";
+				
+				$('#res2').html(code);
+			}
+		}
+	})
+	
+	$('#jarr').on('click', function(){
+		// 요청
+		xhr.open('get', 'jarr.jsp', true);
+		xhr.send();
+		
+		// 응답
+		xhr.onreadystatechange = function(){
+			
+			if(this.readyState == 4 && this.status == 200){
+				res = JSON.parse(this.responseText);
+				
+				code = "<ol>";
+				$.each(res, function(i){
+// 					code += "<li>" + res[i] + "</li>";
+					code += `<li>${res[i]}</li>`;
+				})
+			
+				$('#res3').html(code);
+			}
+		})
+	})
+	
+	$('#jmix').on('click', function(){
+		// 요청
+		xhr.open('get', 'jmix.jsp', true);
+		xhr.send();
+		
+		// 응답
+		xhr.onreadystatechange = function(){
+			
+			if(this.readyState == 4 && this.status == 200){
+				res = JSON.parse(this.responseText);			
+				
+				code = "";
+				$.each(res, function(i, v){
+					code += "***** " + (i+1) + "번째 데이터 *****<br>"
+					code += "<p>아이디 : " + v.id + "</p>";
+					code += "<p>이름 : " + v.name + "</p>";
+					code += "<p>전화번호 : " + v.tel + "</p>";
+					code += "<p>주소 : " + v.addr + "</p>";
+				})
+				
+				$('#res4').html(code);
+			}
+		}
+	})
+	
+})
+</script>
+
+</head>
+
+<body>
+
+<div class="box">
+	<br><br>
+	<input type="button" value="text" id="text">
+	<input type="button" value="jsonobj" id="jobj">
+	<input type="button" value="jsonarr" id="jarr">
+	<input type="button" value="jsonmix" id="jmix">
+	<br>
+	<div id="res1"></div>
+	<div id="res2"></div>
+	<div id="res3"></div>
+	<div id="res4"></div>
+</div>
+
+</body>
+</html>

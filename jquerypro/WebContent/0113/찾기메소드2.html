@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/public.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){
+	$('#parent').on('click', function(){
+		vparent = $('span').parent();
+		
+		$(vparent).css({'color' : 'red', 'border' : '1px solid red'});
+	})
+	
+	$('#parents').on('click', function(){
+		vparents = $('span').parents();
+		
+		$(vparents).css({'color' : 'green', 'border' : '1px solid green'});		
+	})
+	
+	$('#parentsel').on('click', function(){
+		vparentsel = $('span').parents('#res1');
+// 		vparentsel = $('span').parents('ul');
+		
+		$(vparentsel).css({'color' : 'purple', 'border' : '2px solid purple'});		
+	})
+	
+	$('#parentun').on('click', function(){
+		vparentun = $('span').parentsUntil('#res1');
+		
+		$(vparentun).css({'color' : 'orange', 'border' : '2px solid orange'});		
+	})
+	
+	$('button[type=button]').on('click', function(){
+		arr = ["별빛같은 나의 사랑아", "무궁화 꽃이 피었습니다." , "사랑은 늘 도망가", "다시 만날 수 있을까", 
+			"우리들의 블루스", "무지개", "손이 참 곱던 그대"];
+		
+		rand = parseInt(Math.random() * arr.length);
+		
+		vdd = $(this).parents('.dd');
+		
+		vp = $(vdd).find('p');
+		
+		$(vp).text(arr[rand]).css('color', 'red');
+// 		$(vp).css()
+	})
+	
+	$('p').on('click', function(){
+		
+		vcolor = $(this).css('color');
+		console.log(vcolor);
+		
+		vp = $(this).parent();
+		if($(vp).is('.cd')){
+			// 클릭한 p태그를 복사하여 부모에다 붙여넣기
+			$(this).clone(true).appendTo(vp).css('color', 'red');
+			
+		}else {
+			alert("작업 대상이 아닙니다.")
+		}
+	})
+	
+})	
+</script>
+
+<style type="text/css">
+#res1 *, #res2 * { 
+  display: block;
+  border: 2px solid lightgrey;
+  color: lightgrey;
+  padding: 5px;
+  margin: 15px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="box">
+	<br><br>
+	<input type="button" value="parent" id="parent">
+	<input type="button" value="parents" id="parents">
+	<input type="button" value="parentsel" id="parentsel">
+	<input type="button" value="parentun" id="parentun">
+	<br>
+	<div id="res1" class="dd">
+		<p>무궁화 꽃이 피었습니다</p>
+		<div style="width:500px;">div (great-grandparent)
+	    	<ul>ul (grandparent)  
+	      		<li>li (direct parent)
+	        		<span>span<button type="button">확인</button></span>
+	      		</li>
+	    	</ul>   
+	  </div>
+	</div>
+	<br><br><br>
+	<div id="res2" class="dd">
+		<p>무궁화 꽃이 피었습니다</p>
+		<div style="width:500px;">div (great-grandparent)
+	    	<ul>ul (grandparent)  
+	      		<li>li (direct parent)
+	        		<span>span<button type="button">확인</button></span>
+	      		</li>
+	    	</ul>   
+	  </div>
+	</div>
+	
+	<div class="box">
+		<div class="cd">
+			<p>무궁화 꽃이 피었습니다</p>
+		</div>
+		<div class="cd">
+			<p>무궁화 꽃이 피었습니다</p>
+		</div>
+		
+			<p>무궁화 꽃이 피었습니다</p>
+			
+	</div>
+	
+</div>
+
+</body>
+</html>

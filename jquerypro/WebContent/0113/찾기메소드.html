@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<style>
+.siblings * { 
+  display: block;
+  border: 2px solid lightgrey;
+  color: lightgrey;
+  padding: 5px;
+  margin: 15px;
+}
+
+.start{
+	border: 2px solid black;
+}
+</style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+	
+	$('#next').on('click', function(){
+		$("li.start").next().css({"color": "red", "border": "2px solid red"});
+	})
+	
+	$('#nexta').on('click', function(){
+		nextAll = $('li.start').nextAll();
+		
+		$(nextAll).css({"color": "blue", "border": "2px solid blue"});
+	})
+	
+	$('#nextun').on('click', function(){
+		vuntil = $('li.start').nextUntil($('li').last());
+		
+		$(vuntil).css({"color": "purple", "border": "2px solid purple"});
+	})
+	
+	$('#prev').on('click', function(){
+		vprev = $('li.start').prev();
+		
+		$(vprev).css({"color": "red", "border": "2px solid red"});
+	})
+	
+	$('#preva').on('click', function(){
+		vprev = $('li.start').prevAll();
+		
+		$(vprev).css({"color": "blue", "border": "2px solid blue"});
+	})
+	
+	$('#prevun').on('click', function(){
+		vuntil = $('li.start').prevUntil($('li').first());
+		
+		$(vuntil).css({"color": "purple", "border": "2px solid purple"});
+	})
+	
+	$('#siblings').on('click', function(){
+		vsibling = $('li.start').siblings();
+		$(vsibling).css({"color": "white", "background": "blue"});
+	})
+	
+	$('#siblingsel').on('click', function(){
+		vsibling = $('li.start').siblings('.cl');
+		$(vsibling).css({"color": "white", "background": "green"});
+	})
+	
+	
+});
+</script>
+</head>
+
+<body>
+<input type="button" value="next" id="next">
+<input type="button" value="nextall" id="nexta">
+<input type="button" value="nextuntil" id="nextun">
+
+<input type="button" value="prev" id="prev">
+<input type="button" value="preva" id="preva">
+<input type="button" value="prevun" id="prevun">
+
+<input type="button" value="siblings" id="siblings">
+<input type="button" value="siblingsel" id="siblingsel">
+
+<br><br>
+<div style="width:500px;" class="siblings">
+  <ul>ul (parent)  
+    <li>li (sibling)</li>
+    <li class="cl">li (sibling)</li>
+    <li class="cl">li (sibling)</li>
+    <li>li (sibling)</li>
+    <li class="start">li (sibling with class name "start")</li>
+    <li class="cl">li (the next sibling of li with class name "start")</li>
+    <li>li (sibling)</li>
+    <li>li (sibling)</li>
+    <li class="cl">li (sibling)</li>
+    <li>li (sibling)</li>
+  </ul>   
+</div>
+
+</body>
+</html>

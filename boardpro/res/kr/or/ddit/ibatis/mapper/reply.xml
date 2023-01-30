@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+    
+<sqlMap namespace="reply">
+
+<!-- 댓글 등록 -->
+<insert id="insertReply" parameterClass="replyVO">
+	insert into replytab
+	values(
+		reply_num_seq.nextval,
+		#bonum#,
+		#name#,
+		#cont#,
+		sysdate
+	)
+	<selectKey keyProperty="renum">
+	select reply_num_seq.currval from dual
+	</selectKey>
+</insert>
+
+<!-- 댓글 삭제 -->
+<delete id="deleteReply" parameterClass="int">
+	delete from replytab where renum = #data#
+</delete>
+
+<!-- 댓글 수정 -->
+<update id="modifyReply" parameterClass="replyVO">
+	update replytab 
+	set cont = #cont#,
+		redate = sysdate
+	where
+		renum = #renum#
+	
+</update>
+
+</sqlMap>

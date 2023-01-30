@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/public.css">
+<script src="../js/jquery-3.6.3.min.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){
+	$('#btn1').on('click', function(){
+// 		$('img').attr('title', '이미지1');
+		
+		$('img').attr('title', function(){
+			vsrc = $(this).attr('src');
+			
+			start = vsrc.lastIndexOf('/') + 1;
+			end = vsrc.lastIndexOf('.');
+			
+			vtitle = vsrc.slice(start,end);
+			
+			return vtitle;
+		})
+		
+	})
+	
+})
+
+</script>
+
+<style type="text/css">
+img {
+	width: 100px;
+	height: 100px;
+}
+
+input[type=button]:hover {
+	background: #F0E68C;
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="box">
+	버튼을 클릭하면 이미지에 title속성 설정한다.<br><br>
+	<input type="button" value="확인" id="btn1">
+	<br>
+	<div id="res1">
+		<img alt="국화.jpg" src="../images/국화.jpg">
+		<img alt="꽃.jpg" src="../images/꽃.jpg">
+		<img alt="수국10.jpg" src="../images/수국10.jpg">
+		<img alt="진달래.jpg" src="../images/진달래.jpg">
+		<img alt="Tulips.jpg" src="../images/Tulips.jpg">
+	</div>
+</div>
+
+</body>
+</html>

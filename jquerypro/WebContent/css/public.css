@@ -1,0 +1,41 @@
+@charset "UTF-8";
+body{
+	color : white;
+	
+}
+pre{
+	font-size: 1.5em;
+	border: 5px double blue;
+	border-left: none;
+	border-right: none;
+	padding: 10px;
+	background-color: #E6E6FA;
+}
+.box{
+	margin: 10px;
+	padding: 20px;
+	border: 1px dotted gray;
+	background-color: #2E8B57; 
+	box-shadow: 2px 2px 2px 2px #C0C0C0;
+}
+.box div{
+/* 	height: 100px; */
+	padding: 20px;
+	margin: 20px;
+	border: 1px dotted #FAFAD2;
+	background-color : #FAFAD2;
+	color : black;
+	border-radius : 10px;
+	box-shadow: 2px 2px 2px 2px #F0E68C;
+}
+input[type=button]{
+	width: 100px;
+	height: 40px;
+	background: #FAFAD2;
+	font-size: 1.2em;
+	border-radius: 20px; 
+	border: 1px solid #FAFAD2;
+	box-shadow: 2px 2px 2px 2px #F0E68C;
+	font-weight : bold;
+	margin : 5px;
+}

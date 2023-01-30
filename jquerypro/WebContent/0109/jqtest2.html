@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/public.css">
+<script src="../js/jquery-3.6.3.min.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+
+$(document).ready(function(){
+	$('#btn1').on('click', function(){
+		// document.getElementById('res1').innerHTML = "Hello";
+		
+		$('#res1').html('Hello');
+		
+	})
+	
+	$('#btn2').on('click', function(){
+	/*	hlist = document.getElementsByTagName('h1');
+		
+		for(i = 0; i< hlist.length; i++){
+			hlist[i].style.color = 'yellow';
+		}*/
+	
+		//hlist[3].style.background = 'skyblue';
+		
+		// hlist = $('h1');
+		// hlist.css('color', 'yellow');
+		$('h1').css('color', 'blue');
+		$('h1').eq(2).css('background', 'skyblue');
+		
+	})
+	
+})
+
+</script>
+
+</head>
+<body>
+
+<div class="box">
+	<br><br>
+	<input type="button" value="확인" id="btn1">
+	<br>
+	<div id="res1"></div>
+</div>
+
+<div class="box">
+	버튼 클릭 시 모든 h1 태그를 선택<br>
+	글자색을 변경 한다.<br><br>
+	<input type="button" value="확인" id="btn2">
+	<br>
+	<h1>무궁화 꽃이 피었습니다.</h1>
+	<h1>능소화 꽃이 피었습니다.</h1>
+	<h1>진달래 꽃이 피었습니다.</h1>
+	<h1>라일락 꽃이 피었습니다.</h1>
+	<div id="res2"></div>
+</div>
+</body>
+</html>

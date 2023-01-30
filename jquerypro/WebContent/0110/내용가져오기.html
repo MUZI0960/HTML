@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/public.css">
+<script src="../js/jquery-3.6.3.min.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+$(function(){
+	//방법1------------------------------------
+// 	jbtn = $('#btn1')
+// 	jbtn.on('click', function(){})
+	//방법2------------------------------------
+	$('#btn1').on('click', function(){
+//	  	alert($('body').html());
+// 		alert($('body').text());
+
+// 		alert( $('p').html());    // 첫번째 p태그 내용만 가져옴 -> 1. <span>홍길동</span>
+// 		alert( $('.box').html()); // 첫번째 .box안의 내용 가져옴 + html 태그 포함
+		
+// 		alert( $('.box').text()); // 모든 .box 내용 가져옴, html 태그 미포함
+		alert( $('p').text());	  // 모든 p태그의 내용을 가져옴 - html 태그 미포함
+	})
+	
+	
+	//방법3------------------------------------
+	//dom 객체를 jduery객체로 변환 -> $()안에 넣기
+// 	dbtn = document.getElementById('btn1');
+// 	dbtn.addEventListener('click', proc1)
+// 	$(dbtn).on('click', function(){ })
+
+	$('#btn2').on('click', function(){
+		
+		// 1개만 가져오게 됨.
+// 			$('#res2 p').html();
+		
+		str = "";
+		
+		// 방법1
+// 		$('#res p').each(function(i){
+// 			str += $('#res p').eq(i).html() + "\n";	// jquery 
+		
+		// 방법2
+// 		$('#res2 p').each(function(i, v){
+// 			str += $(v).html() + "\n";	// jquery 
+			
+			//$('#res p')[i].innerHTML				// dom
+			//$($('#res p')[i]).html()				// jquery
+			
+		// 방법3	
+// 		$('#res2 p').each(function(){
+// 			str += $(this).html() + "\n";	// jquery 
+			
+// 		})
+		
+		$.each($('#res2 p'), function(){
+			str += $(this).html() + "<br>";			
+		})
+		alert(str);
+		
+		// 출력
+// 		$('#res3').html(str);
+ 		$('#res3').text(str);
+		
+	})
+
+
+})
+</script>
+
+<style type="text/css">
+span {
+	background: #FFA07A;
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="box">
+	<br><br>
+	<input type="button" value="확인" id="btn1">
+	<br>
+	<div id="res1">
+		<p>1. <span>홍길동 </span></p>
+	    <p>2. <span>개나리 </span></p>
+	    <p>3. <span>진달래 </span></p>  
+	</div>
+</div>
+
+<div class="box">
+	<br><br>
+	<input type="button" value="확인" id="btn2">
+	<br>
+	<div id="res2">
+		<p>1. <span>홍길동 </span></p>
+	    <p>2. <span>개나리 </span></p>
+	    <p>3. <span>진달래 </span></p>  
+	</div>
+</div>
+
+<div class="box">
+
+	<div id="res3">
+
+	</div>
+</div>
+
+</body>
+</html>

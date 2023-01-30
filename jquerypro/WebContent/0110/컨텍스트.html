@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/public.css">
+
+<script src="../js/jquery-3.6.3.min.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+
+$(function(){
+	
+	// 전체 p태그를 대상으로 
+	$('p').css('font-size', '1.5em').css('color', 'blue');
+	
+	// 클릭한 div내부의 p선택 - box는 제외
+	$('.box div').on('click', function(){
+		// $('this p') 이런식으로 써야 하나 this가  ' ' 안으로 들어가면 안되서 아래와 같이 작성
+		$('p', this).css('background', 'pink');
+		
+	})
+	
+	// 0번째 form객체 document>forms 내부의 p태그를 선택
+	$('p', document.forms[0]).css('color', 'red');
+	
+})
+
+</script>
+
+<style type="text/css">
+form {
+	color: black;
+}
+
+</style>
+
+</head>
+<body>
+
+<!-- $('.box div p') => 무궁화 ~ 선택됨
+	$('.box p') => 무궁화, 사랑은, 블루스 선택됨
+	 $('box>p') => box의 자손인 블루스만 선택됨 (후손인 무궁화, 사랑은은 선택X)
+-->
+<div class="box">
+
+	<div id="res1">
+		<p>무궁화 꽃이 피었습니다</p>
+	</div>
+	
+	<div>
+		<p>사랑은 늘 도망가</p>
+	</div>
+	
+	<p>우리들의 블루스</p>
+	
+</div>
+
+<form>
+	<p>별빛같은 나의 사랑아</p>
+</form>
+
+<form>
+	<p>라일락 꽃이 피었습니다</p>
+</form>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/public.css">
+<script src="../js/jquery-3.6.3.min.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){
+	$('.pp').on('click', function(){
+		$(this).css('font-size', '+=5px');
+	})
+	
+	$('#btn1').on('click', function(){
+		vp1 = $('#p1').clone();
+		
+		$('#res1').append(vp1);
+		
+	})
+	
+	$('#btn2').on('click', function(){
+		// 글자 커지는 이벤트가 둘 다 가능한
+		vp2 = $('#p2').clone(true);
+		
+		$(vp2).appendTo('#res2');
+		
+	})
+	
+	
+})
+</script>
+
+<style type="text/css">
+
+</style>
+
+</head>
+
+<body>
+
+<div class="box">
+	<br><br>
+	<input type="button" value="clone" id="btn1">
+	<input type="button" value="clone(true)" id="btn2">
+	<br>
+	<p id="p1" class="pp">무궁화 꽃이  피었습니다.1</p>
+	<p id="p2" class="pp">무궁화 꽃이  피었습니다.2</p>
+	
+	<div id="res1"></div>
+	<div id="res2"></div>
+</div>
+
+</body>
+</html>

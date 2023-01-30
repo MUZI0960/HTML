@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/public.css">
+<script src="../js/jquery-3.6.3.min.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+// 1. window.onload = function(){}
+// 2. $(document).ready(function(){})
+$(function(){
+	$('#btn1').on('click', function(){
+		// Script 방법
+// 		vimg = document.createElement('img');
+// 		vimg.src="../images/딸기스무디.jpg";
+// 		vimg.alt="딸기스무디.jpg";
+// 		vimg.onclick = 
+		
+// 		document.getElementById('res1').appendChild(vimg);
+
+// 		$('<img src="../images/딸기스무디.jpg" alt="딸기스무디.jpg">').appendTo($('#res1'));
+		
+		vimg = $('<img src="../images/카페라떼.jpg" alt="카페라떼.jpg" onclick="proc1(this)">');
+		//$('#res1').append(vimg);
+		$(vimg).appendTo($('#res1'));
+
+	})
+	
+	proc1 = (vimg) =>{
+		$(vimg).css('border', '2px solid blue');
+		
+		
+	}
+	
+	$('#btn2').on('click', () => {
+		vimg = $('<img>', { 
+			'src' : '../images/카푸치노.jpg', 
+ 			'alt' : '카푸치노.jpg',
+// 			'click' : function(){
+// 				$(this).css('border', '2px solid red');
+// 			}
+		})
+		
+		
+		//$(vimg).appendTo($('#res2'));
+		$('#res2').append(vimg);
+		
+	})
+	
+	// 새롭게 만들어진 요소는 이벤트 핸들러를 적용 시킬 수 없다
+// 	$('img').on('click', function(){
+// 		$(this).css('border', '2px solid blue');
+		
+// 	})
+	
+	// 새롭게 생성된 요소의 이벤트 핸들러 설정
+	$('#res2').on('click', 'img', function(){
+		// this는 img
+		$(this).css('border', '2px solid green');
+	})
+	
+	$('#btn3').on('click', function(){
+		
+// 		ptag = $("<p class='p1'>Hello</p>");
+		ptag = $('<p></p>', { 
+			'class' : 'p1',
+			'text' : 'Welcome'
+		});
+		
+		$(ptag).appendTo($('#res3'));
+		
+	})
+	
+	$('#res3').on('click', '.p1', function(){
+		
+		// this => 'click', '.p1'
+		$(this).css('background', 'skyblue');
+		
+	})
+	
+})
+
+</script>
+
+<style type="text/css">
+img {
+	width: 100px;
+	height: 100px;
+}
+
+</style>
+
+</head>
+<body>
+
+<div class="box">
+	버튼 클릭 시 새로운 이미지 추가<br>
+	부모.append(새로운요소)<br>
+	새로운요소.appendTo(부모);<br>
+	이미지를 클릭하면 테두리를 설정<br><br>
+	<input type="button" value="확인" id="btn1">
+	<br>
+	<div id="res1"></div>
+</div>
+
+<div class="box">
+	버튼 클릭 시 새로운 이미지 추가<br>
+	부모.append(새로운요소)<br>
+	새로운요소.appendTo(부모);<br>
+	이미지를 클릭하면 테두리를 설정<br><br>
+	<input type="button" value="확인" id="btn2">
+	<br>
+	<div id="res2"></div>
+</div>
+
+<div class="box">
+	버튼 클릭 시 p태그 추가<br>
+	부모.append(새로운요소)<br>
+	새로운요소.appendTo(부모);<br>
+	p태그 클릭하면 배경색을 설정<br><br>
+	<input type="button" value="확인" id="btn3">
+	<br>
+	<div id="res3"></div>
+</div>
+
+</body>
+</html>

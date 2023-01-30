@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/public.css">
+<script src="../js/jquery-3.6.3.min.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+$(function() {
+	
+		$('#btn1').on('click', function(){
+			str = ["원", "2000원", "10000원", "5000원"];	
+		
+			reg = /.*(?=원)/;
+			
+			bb = "";
+			
+			for(i=0; i<str.length; i++){
+				
+				bb += reg.test(str[i]) + "\n";
+			}
+			
+			alert(bb);
+			
+		})
+		
+	
+})
+</script>
+
+</head>
+
+<body>
+
+<div class="box">
+	<br><br>
+	<input type="button" value="확인" id="btn1">
+	<br>
+	<div id="res1"></div>
+</div>
+
+</body>
+</html>

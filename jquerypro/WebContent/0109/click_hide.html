@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/public.css">
+
+<script src="../js/jquery-3.6.3.min.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+
+proc1 = (htag) =>{
+	
+	// htag.style.display = "none";
+	
+	$(htag).css('display', 'none');
+	
+	// 비교 - 보여지는 h1태그가 없으면 (다 사라졌다면)
+	if($('#res1 h1:visible').length < 1) $('#btn1').show(); 
+}
+
+
+
+//window.onload = function(){ }
+//$(document).ready(function(){
+$(function(){
+	$('#res2 h1').on('click', function(){
+		$(this).hide();		
+		
+		//$(this).css('display', 'none');
+		
+		// 비교 - 다 사라졌다면
+		if($('#res2 h1:visible').length < 1) $('#btn2').show(); 
+		
+	})
+	
+	// res3 검색 - h1검색
+	hlist = $('#res3 h1'); 	// hlist는 jquery 변수
+	
+	for(i = 0; i<hlist.length; i++){
+		// jquery변수를 다시 dom변수로 변환
+		hlist[i].addEventListener('click', hclick); 	
+	}
+	
+	$('#btn1').on('click', function(){
+		$('#res1 h1').show();
+		$(this).hide();
+	})
+	
+	$('#btn2').on('click', function(){
+		$('#res2 h1').show();
+		$(this).hide();
+	})
+	
+	$('#btn3').on('click', function(){
+		$('#res3 h1').show();
+		$(this).hide();
+	})
+	
+})
+
+function hclick(){
+	// 둘 중 하나 사용
+	//this.style.display = 'none';
+	
+	$(this).hide();
+	
+	// 비교
+	if($('#res3 h1:visible').length < 1) $('#btn3').show();
+}
+</script>
+
+<style type="text/css">
+h1:hover{
+	color: gray;
+}
+input[type=button]{
+	display: none;
+}
+
+</style>
+
+</head>
+<body>
+
+<div class="box">
+	<input id="btn1" type="button" value="보이기">
+ 	<div id="res1">
+		<h1 onclick="proc1(this)">Click시 사라집니다 1</h1>
+		<h1 onclick="proc1(this)">Click시 사라집니다 2</h1>
+		<h1 onclick="proc1(this)">Click시 사라집니다 3</h1>
+		<h1 onclick="proc1(this)">Click시 사라집니다 4</h1>
+		<h1 onclick="proc1(this)">Click시 사라집니다 5</h1>
+		<h1 onclick="proc1(this)">Click시 사라집니다 6</h1>
+		<h1 onclick="proc1(this)">Click시 사라집니다 7</h1>
+		<h1 onclick="proc1(this)">Click시 사라집니다 8</h1>
+		<h1 onclick="proc1(this)">Click시 사라집니다 9</h1>
+		<h1 onclick="proc1(this)">Click시 사라집니다 10</h1>
+	</div>	
+</div>
+
+<div class="box">
+	<input id="btn2" type="button" value="보이기">
+	<div id="res2">
+		<h1>Click시 사라집니다 1</h1>
+		<h1>Click시 사라집니다 2</h1>
+		<h1>Click시 사라집니다 3</h1>
+		<h1>Click시 사라집니다 4</h1>
+		<h1>Click시 사라집니다 5</h1>
+		<h1>Click시 사라집니다 6</h1>
+		<h1>Click시 사라집니다 7</h1>
+		<h1>Click시 사라집니다 8</h1>
+		<h1>Click시 사라집니다 9</h1>
+		<h1>Click시 사라집니다 10</h1>
+	</div>
+</div>
+
+<div class="box">
+	<input id="btn3" type="button" value="보이기">
+	<div id="res3">
+		<h1>Click시 사라집니다 1</h1>
+		<h1>Click시 사라집니다 2</h1>
+		<h1>Click시 사라집니다 3</h1>
+		<h1>Click시 사라집니다 4</h1>
+		<h1>Click시 사라집니다 5</h1>
+		<h1>Click시 사라집니다 6</h1>
+		<h1>Click시 사라집니다 7</h1>
+		<h1>Click시 사라집니다 8</h1>
+		<h1>Click시 사라집니다 9</h1>
+		<h1>Click시 사라집니다 10</h1>
+	</div>
+</div>
+
+</body>
+</html>

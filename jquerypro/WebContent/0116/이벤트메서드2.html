@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/public.css">
+<script src="../js/jquery-3.6.3.min.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+$(function(){
+	// bind방식
+	$('.btn1').on('click', function(){
+		
+		vnew = $('<input type="button" value="확인" class="btn1">');
+		$(vnew).appendTo('#res1');
+		
+	})
+	
+	// delegate방식
+	//$(document).delegate('.btn2', 'click', function(){})
+	// 위 방식이 jQuery 3~ 에서 아래처럼 사용
+	// 사이에 선택자 있으면 delegate, 없으면 bind 방식
+	$(document).on('click', '.btn2', function(){
+		vnew = $('<input type="button" value="확인" class="btn2">');
+		$(vnew).appendTo('#res2');
+	})
+	
+	// 헤제버튼
+	$('#btn3').on('click', function(){
+		$(document).off('click', '.btn2');
+	})
+	
+	// 추가버튼
+	count = 0;
+	$('.btn4').on('click', function(){
+		count++;
+		vfile = '<p>';
+		vfile += '<input type="file" name="file">';
+		vfile += '<input type="button" value="삭제' + count + '" class="del">';
+		vfile += '</p>';
+		
+// 		$(vfile).appendTo('#filebox');
+		$('#filebox').append(vfile);
+		
+	})
+	
+	// 삭제 버튼 - 실행후에 동적으로 새롭게 생성된 요소 (delegate방식)
+	$(document).on('click', '.del', function(){
+		$(this).parent().remove();
+		
+	})
+})
+</script>
+
+</head>
+
+<body>
+
+<div class="box">
+	bind방식의 이벤트 핸들러 설정<br>
+	새롭게 생성되는 요소는 이벤트 핸들러가 적용되지 않는다.<br><br>
+	<input type="button" value="확인" class="btn1">
+	<br>
+	<div id="res1"></div>
+</div>
+
+<div class="box">
+	delegate방식의 이벤트 핸들러 설정<br>
+	기존의 요소나 새롭게 생성되는 요소에 똑같은 이벤트 핸들러가 적용되어 실행된다.
+	<br><br>
+	<input type="button" value="확인" class="btn2">
+	<br><br>
+	<input type="button" value="해제" id="btn3">
+	
+	
+	<div id="res2"></div>
+</div>
+
+<div class="box" id="filebox">
+	delegate방식의 이벤트 핸들러 설정<br>
+	기존의 요소나 새롭게 생성되는 요소에 똑같은 이벤트 핸들러가 적용되어 실행된다.
+	<br><br>
+	<input type="file" name="file">
+	<input type="button" value="추가" class="btn4">
+	<br><br>
+</div>
+
+</body>
+</html>

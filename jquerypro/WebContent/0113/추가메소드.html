@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/public.css">
+<script src="../js/jquery-3.6.3.min.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+$(function(){
+	
+	$('.box1 p').on('click', function(){
+		vstr1 = $(this).attr('title');
+		vstr2 = $(this).text();
+		
+		// 이미지를 생성
+		vimg = $('<img>', { 
+					'src' : '../images/' + vstr1 + ".jpg",
+					'alt' : vstr1 + '.jpg'
+		})
+		$(vimg).appendTo(this);
+		
+//		$(this).append(vimg);
+// 		$(this).prepend(vimg);
+		
+	})
+	
+	$('.box2 p').on('click', function(){
+		vstr1 = $(this).attr('title');
+		vstr2 = $(this).text();
+		
+		// 이미지를 생성
+		vimg = $('<img>', { 
+					'src' : '../images/' + vstr1 + ".jpg",
+					'alt' : vstr1 + '.jpg'
+		})
+		
+
+		
+// 		$(this).after(vimg);
+		$(vimg).insertAfter(this);
+		
+// 		$(this).before(vimg);
+// 		$(vimg).insertBefore(this);
+	})
+	
+// 	$('#btn1, #btn2, #btn3, #btn4')
+// 	$('input[type=button]')
+// 	$('input:button')
+	//버튼 class가 같다면
+	$('.btn').prop('disabled', true);
+	
+	$('.btn').on('click', function(){
+		alert("버튼");
+	})
+	
+	
+	
+})
+
+</script>
+
+<style type="text/css">
+p{
+	border: 1px dotted white;
+	padding: 10px;
+}
+img {
+	width: 100px;
+	height: 100px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="box box1">
+	prop("상태속성") 	  ==> get ==> true / false 리턴<br>
+	prop("상태속성", 값) ==> set ==> 값이 true / false 설정<br>
+	$('.btn').prop('disabled', true)
+	<br><br>
+	<input type="button" value="append" id="btn1" class="btn">
+	<input type="button" value="prepend" id="btn2" class="btn">
+	<br>
+	
+	<p title="Tulips">튜울립</p>
+  	<p title="Chrysanthemum">국화</p>
+  	<p title="Koala">코알라</p>
+  	<p title="Hydrangeas">수국</p>  
+	
+	<div id="res1"></div>
+</div>
+
+<div class="box box2">
+	<br><br>
+	<input type="button" value="after" id="btn3" class="btn">
+	<input type="button" value="before" id="btn4" class="btn">
+	<br>
+	
+	<p title="Tulips">튜울립</p>
+  	<p title="Chrysanthemum">국화</p>
+  	<p title="Koala">코알라</p>
+  	<p title="Hydrangeas">수국</p>  
+	
+	<div id="res3"></div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- 
+	이 xml문서는 iBatis의 환경 설정에 사용되는 문서입니다.
+ -->
+
+<!DOCTYPE sqlMapConfig
+	PUBLIC "-//ibatis.apache.org//DTD SQL Map Config 2.0//EN"
+	"http://ibatis.apache.org/dtd/sql-map-config-2.dtd">
+	
+<sqlMapConfig>
+	<!-- 
+		DB연결에 필요한 정보가 저장될 properties파일에 대한 정보 설정
+	 -->
+	 <properties resource="kr/or/ddit/ibatis/config/dbinfo.properties" />
+	
+	<!-- 
+		실행할 쿼리문을 호출할 때 각 쿼리문이 작성된 XML문서의 namespace속성을 이용해서
+		찾을 수 있도록 설정
+	 -->
+	<settings useStatementNamespaces="true"/>
+	
+	<!-- 
+		쿼리문의 파라미터나 처리 결과에 사용할 VO객체는 패키지 이름을 포함한 전체 이름을 
+		사용해야 하는데, 그렇게 되면 문장이 너무 길어질 수 있기 때문에 전체 이름을 대신할
+		Alias를 설정할 수 있다.
+		미리 만들어 놓으면 오류 날 수 있다.
+		
+		형식: <typeAlias alias="사용할alias명" type="실제 클래스의 전체 이름"/>
+	 -->
+	
+	<typeAlias alias="boardVO" type="kr.or.ddit.board.vo.BoardVO.java"/>
+	<typeAlias alias="ReplyVO" type="kr.or.ddit.board.vo.ReplyVO.java"/>
+	
+	<!-- 
+		DB와 연결을 처리하는 정보 설정하기
+	 -->
+	<transactionManager type="JDBC">
+		<dataSource type="SIMPLE">
+			<property name="JDBC.Driver" value="${driver}"/>
+			<property name="JDBC.ConnectionURL" value="${url}"/>
+			<property name="JDBC.Username" value="${user}"/>
+			<property name="JDBC.Password" value="${pass}"/>
+		</dataSource>
+	</transactionManager>
+		
+	<!-- 
+		- 실행할 SQL문이 저장된 xml문서 등록하기 
+		 ==> 실행할 SQL문은 xml문서로 따로 만든 후 그 xml문서를 아래와 같이 등록하면 된다.
+		 
+		 형식 : <sqlMap resource="경로명/파일명.xml" />
+		
+	-->
+	
+	
+	<sqlMap resource="kr/or/ddit/ibatis/mapper/board.xml" />
+	<sqlMap resource="kr/or/ddit/ibatis/mapper/reply.xml" />
+	
+		
+</sqlMapConfig>

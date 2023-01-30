@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/public.css">
+<script src="../js/jquery-3.6.3.min.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+
+$(function(){
+	$('#btn1').on('click', function(){
+		
+		$('li:first , li:last').css('background', 'yellow');
+		
+		$('li:eq(5)').css('background', 'red');
+		
+		$('li:lt(4)').css('font-size', '1.5em').css('font-weight', 'bold');
+		
+	})
+	
+	$('#btn2').on('click', function(){
+		
+		$('tr:even').css('background', 'lightgrey');
+		$('tr:odd').css('background', 'skyblue');
+		$('tr').css('font-weight', 'bold');
+		$('tr:first').css('background', 'grey');
+		$('tr:first').css('color', 'white');
+		
+		
+	})
+	
+})
+</script>
+
+<style type="text/css">
+table{
+	border: 2px solid blue;
+}
+
+td{
+	width: 300px;
+	height: 50px;
+	text-align: center; 
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="box">
+	:first<br>
+	:last<br>
+	:eq(5)<br>
+	:lt(4)<br><br>
+	<input type="button" value="확인" id="btn1">
+	<br>
+	<div id="res1">
+		<ul>
+			<li> one </li>
+			<li> two </li>
+			<li> three </li>
+			<li> four </li>
+			<li> five </li>
+			<li> six </li>
+			<li> seven </li>
+			<li> eight </li>
+			<li>nine</li>
+		</ul>
+	</div>
+</div>
+
+<div class="box">
+	tr:even<br>
+	tr:odd<br><br>
+	<input type="button" value="확인" id="btn2">
+	<br>
+	<div id="res2">
+		<table border="1">
+			<tr>
+				<td>ONE</td>
+				<td>1</td>
+			</tr>
+			<tr>
+				<td>TWO</td>
+				<td>2</td>
+			</tr>
+			<tr>
+				<td>THREE</td>
+				<td>3</td>
+			</tr>
+			<tr>
+				<td>FOUR</td>
+				<td>4</td>
+			</tr>
+			<tr>
+				<td>FIVE</td>
+				<td>5</td>
+			</tr>
+			<tr>
+				<td>SIX</td>
+				<td>6</td>
+			</tr>
+			<tr>
+				<td>SEVEN</td>
+				<td>7</td>
+			</tr>
+			<tr>
+				<td>EIGHT</td>
+				<td>8</td>
+			</tr>
+			<tr>
+				<td>NINE</td>
+				<td>9</td>
+			</tr>
+			<tr>
+				<td>TEN</td>
+				<td>10</td>
+			</tr>
+			
+		</table>
+	</div>
+</div>
+
+</body>
+</html>

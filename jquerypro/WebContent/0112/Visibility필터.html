@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/public.css">
+<script src="../js/jquery-3.6.3.min.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+$(function(){
+	$('#btn1').on('click', function(){
+		
+		str = "";
+		$('p:visible').each(function(){
+			str += $(this).text() + "<br>";
+		})
+		// 출력
+		$('#visible').html(str);
+		
+	})
+	
+	$('#btn2').on('click', function(){
+		str = "";
+		
+		$('p:hidden').each(function(){
+			str += $(this).text() + "<br>";
+		})
+		
+		$('#hidden').html(str);
+	})
+	
+	$('#btn3').on('click', ()=>{
+		
+		str = "***visible객체***<br>";
+		$('#testForm *:visible').each(function(){
+			
+			// 태그 이름을 비교 - tagName
+			//alert(this.tagName);
+			if(this.tagName == "INPUT"){
+				
+				vtype = $(this).attr('type');
+				
+				if(vtype == 'radio'){
+					// checked인 radio 체크하기
+					if( $(this).prop('checked')){
+					str += this.tagName + " : " + $(this).attr('name');
+					str += " = " + $(this).val() + "<br>";
+					}
+				}else {
+					str += this.tagName + " : " + $(this).attr('name');
+					str += " = " + $(this).val() + "<br>";
+				}
+				
+			}else if(this.tagName != "BR"){
+				str += this.tagName + " : " + $(this).text() + "<br>";
+			}
+			
+		})
+		
+		$('#fvisible').html(str);
+	})
+	
+	$('#btn4').on('click', ()=>{
+		
+		str = "***hidden객체***<br>";
+		$('#testForm *:hidden').each(function(){
+			
+			// 태그 이름을 비교 - tagName
+			//alert(this.tagName);
+			if(this.tagName == "INPUT"){
+				str += this.tagName + " : " + $(this).attr('name');
+				str += " = " + $(this).val() + "<br>";
+			}else if(this.tagName != "BR"){
+				str += this.tagName + " : " + $(this).text() + "<br>";
+			}
+			
+		})
+		
+		$('#fhidden').html(str);
+	})
+	
+})
+
+</script>
+
+</head>
+
+<body>
+
+<div class="box">
+	<br><br>
+	<input type="button" value="visible" id="btn1">
+	<input type="button" value="hidden" id="btn2">
+	<br>
+	 	<p> 보이는 문단</p>
+		<p style="visibility:hidden;">숨겨진 문단</p>
+		<p style="display:none;"> 자리를 차지 하지 못한 문단 </p>
+		<p style="opacity:0;"> 투명한 문단</p>
+	
+	
+	<div id="visible"></div>
+	<div id="hidden"></div>
+</div>
+
+<div class="box">
+	상태값 비교 - prop('상태 속성') - checked, selected, multiple, disabled, readonly<br>
+	상태에 따라 true / false 리턴
+	체크되어있는 상태 값 비교 - prop('checked')
+	<br><br>
+	<input type="button" value="visible" id="btn3">
+	<input type="button" value="hidden" id="btn4">
+	<br><br>
+		<form id="testForm"> 
+			<input type="hidden" name="userAge" value="33">
+			<input type="hidden" name="userCity" value="대전">
+			I D : <input type="text" name="userID" value="hong">  
+			<span style="display:none">ID가 중복됩니다. </span> <br>  
+			이름 : <input type="text" name="userName" value="홍길동">   
+			<span style="visibility:hidden">이름을 입력하세요</span><br>  
+			성별 : <input type="radio" name="sung" value="남" checked>남자  
+			<input type="radio" name="sung" value="여">여자  
+		</form>
+	
+	<div id="fvisible"></div>
+	<div id="fhidden"></div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/public.css">
+<script src="../js/jquery-3.6.3.min.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+$(function(){
+	
+	
+})
+</script>
+
+</head>
+
+<body>
+
+<div class="box">
+	$('h3 + p') : h3 다음의 형제 요소 중 처음 p<br>
+	$('h3 ~ p') : h3 다음의 형제 요소 중 모든 p<br><br>
+	<input type="button" value="확인" id="btn1">
+	<br>
+	<div id="res1">
+		<p>형제 선택자 에 대하여</p>
+	 	<h3> 꼬마버스 타요 가족을 소개 합니다</h3>
+	 	<p> 타요</p>
+		<p> 로기</p>
+		<p> 라니 </p>
+		<p> 가니 </p>
+	</div>
+</div>
+
+<script type="text/javascript">
+	$('#btn1').on('click', function(){
+		  //h3 다음의 모든 형제의 배경색을 변경, 길이지정, 가운데정렬
+// 		  $('h3 ~ p').css('background', 'yellow')
+// 		  			 .css('width', '50%')
+// 		  			 .css('text-align', 'center');
+		  
+		  $('h3 ~ p').css({'background': 'skyblue', 
+			  			   'width': '50%',
+			  			   'text-align' : 'center' })
+		  
+	      //h3 다음의 첫번째 형제의 글자를 굵게, 크게  : font-weight 
+// 			$('h3 + p').css('font-weight', 'bold').css('font-size', '1.2em');
+			$('h3 + p').css({'font-weight': 'bold',
+							 'font-size': '1.3em'});
+		
+	})
+</script>
+
+</body>
+</html>
+
+
+

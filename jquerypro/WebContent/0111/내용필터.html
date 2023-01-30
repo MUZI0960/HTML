@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/public.css">
+<script src="../js/jquery-3.6.3.min.js" type="text/javascript"></script>
+<script type="text/javascript">
+
+$(function(){
+	
+	$('#btn1').on('click', function(){
+		
+// 		jQuery가 포함된 span태그 의 테두리 파랑 : 
+		vsp = $('span:contains(jQuery)');
+		$(vsp).css('border', 'solid skyblue');
+	
+// 		jQuery가 포함되지 않은 span 태그의 테두리 빨강  : 
+		$('span:not(span:contains(jQuery))').css('border', 'solid red');
+// 		span을 갖는 div요소 태그의 테두리 그린 
+		$('#res1 div:has(span)').css('border', 'solid green');
+
+// 		아무것도 없는 빈 div 태그의 테두리 
+		$('#res1 div:empty').css('border', '2px solid orange');
+		
+// 		div 후손 span 태그의 글자색  빨강, 크기, 굵게
+		sp = $('.box #res1 div span');
+		sp.css('color', 'red');
+		sp.css('font-size', '1.5em');
+		sp.css('font-weight', 'bold');
+
+// 		sp.css({'color' : 'red', 'font-size' : '1.5em', 'font-weight': 'bold' })
+		
+		
+		
+	})
+	
+})
+
+</script>
+
+</head>
+
+<body>
+
+<div class="box">
+	<br><br>
+	<input type="button" value="확인" id="btn1">
+	<br>
+	<div id="res1">
+		<div></div>
+		<div>헬로우~~
+		      <span>오늘도  즐겁게~열심히!</span>
+		</div>
+		<p>Hello jQuery! <span>Thanks, jQuery!</span></p>
+		<div class="myClass">jQuery!</div>
+		<span class="notMyClass">쉬운 jQuery~~!</span>
+		<div></div>
+	</div>
+</div>
+
+</body>
+</html>

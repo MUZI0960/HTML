@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/public.css">
+<script src="../js/jquery-3.6.3.min.js" type="text/javascript"></script>
+<script type="text/javascript">
+$(function(){
+// 	$('#btn1').bind('click', function(){})
+// 	$('#btn1').on('click', function(){})
+	$('#btn1').click(function(){
+		$('<img>', {
+			'src' : '../images/Hydrangeas.jpg',
+			'alt' : 'Hydrangeas.jpg'
+		}).appendTo('#res1');
+		
+	})
+	// 새롭게 추가된 imp에는 이벤트핸들러가 작동하지 않음
+	/*$('img').on('click', function(){
+		$(this).css('border', '3px solid blue');		
+	})*/
+	
+	// 새롭게 추가된 img에는 delegate방식으로 이벤트 핸들러를 등록한다.
+// 	$(document).delegate('img', 'click', function(){
+// 		$(this).css('border', '3px solid blue');		
+// 	})
+	
+	$(document).on('click', 'img', function(){
+		$(this).css('border', '3px solid blue');		
+	})
+	
+})
+</script>
+
+<style type="text/css">
+img {
+	width: 100px;
+	height: 100px;
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="box">
+	bind() : 이벤트 핸들러 등록<br>
+	실행 이전에 body-document에 미리 코딩되어 생성된 요소들에만 적용<br><br>
+	<input type="button" value="확인" id="btn1">
+	<br>
+	<div id="res1"></div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/public.css">
+<script src="../js/jquery-3.6.3.min.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+
+proc1 = () =>{
+	
+	//$('table#tab1 > tbody > tr').css('background', '#FFE4E1');
+	//$('table#tab tr').css('background', '#FFE4E1');
+	
+	$('#tab1 td:nth-child(2n)').css('background', '#FFE4E1');
+	
+	$('#tab1 tr:nth-child(1) td').css('background', 'grey').css('color', 'white');
+}
+
+</script>
+
+<style type="text/css">
+table {
+	border: 2px solid black;
+	margin: 10px;
+}
+  td {
+	width:  200px;
+	height: 50px;
+	text-align: center;
+}
+</style>
+</head>
+
+<body>
+
+<div class="box">
+	<br><br>
+	<input type="button" value="확인" onclick="proc1()">
+	<br>
+	<div id="res1">
+	
+	<table id="tab1" border="1">
+	  <tr>
+	  	<td>제목1</td>
+	  	<td>제목2</td>
+	  	<td>제목3</td>
+	  	<td>제목4</td>
+	  	<td>제목5</td>
+	  </tr>
+	  
+	  <tr>
+	  	<td>1</td>
+	  	<td>2</td>
+	  	<td>3</td>
+	  	<td>4</td>
+	  	<td>5</td>
+	  </tr>
+	  
+	  <tr>
+	  	<td>1</td>
+	  	<td>2</td>
+	  	<td>3</td>
+	  	<td>4</td>
+	  	<td>5</td>
+	  </tr>
+	  
+	  <tr>
+	  	<td>1</td>
+	  	<td>2</td>
+	  	<td>3</td>
+	  	<td>4</td>
+	  	<td>5</td>
+	  </tr>
+	  
+	  <tr>
+	  	<td>1</td>
+	  	<td>2</td>
+	  	<td>3</td>
+	  	<td>4</td>
+	  	<td>5</td>
+	  </tr>
+	  
+	  <tr>
+	  	<td>1</td>
+	  	<td>2</td>
+	  	<td>3</td>
+	  	<td>4</td>
+	  	<td>5</td>
+	  </tr>
+	</table>
+	
+	</div>
+</div>
+
+</body>
+</html>
