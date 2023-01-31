@@ -29,8 +29,9 @@
 		형식: <typeAlias alias="사용할alias명" type="실제 클래스의 전체 이름"/>
 	 -->
 	
-	<typeAlias alias="boardVO" type="kr.or.ddit.board.vo.BoardVO.java"/>
-	<typeAlias alias="ReplyVO" type="kr.or.ddit.board.vo.ReplyVO.java"/>
+	<typeAlias alias="boardVO" type="kr.or.ddit.board.vo.BoardVO"/>
+	<typeAlias alias="ReplyVO" type="kr.or.ddit.board.vo.ReplyVO"/>
+	
 	
 	<!-- 
 		DB와 연결을 처리하는 정보 설정하기

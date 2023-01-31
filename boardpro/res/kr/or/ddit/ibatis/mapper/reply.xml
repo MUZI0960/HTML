@@ -26,7 +26,7 @@
 </delete>
 
 <!-- 댓글 수정 -->
-<update id="modifyReply" parameterClass="replyVO">
+<!-- <update id="modifyReply" parameterClass="replyVO">
 	update replytab 
 	set cont = #cont#,
 		redate = sysdate
@@ -34,5 +34,5 @@
 		renum = #renum#
 	
 </update>
-
+ -->
 </sqlMap>

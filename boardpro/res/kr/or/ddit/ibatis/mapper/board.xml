@@ -17,7 +17,7 @@
  </sql>
  
  <!-- 글 리스트 -->
- <select id="selectByPage" resultClass="boardVo" parameterClass="map"> 
+ <select id="selectByPage" resultClass="boardVO" parameterClass="map"> 
  	select A.* from 
      (select rownum as rnum , B.* from
         ( select * from boardtab
@@ -38,7 +38,7 @@
    </select>
    
    <!-- 글 수정 -->
-   <update id="modifyBoard" parameterClass="boardVO">
+  <!--  <update id="modifyBoard" parameterClass="boardVO">
    	 update boardtab set 
    	 		subject = #subject#,
    	 		mail = #mail#, 
@@ -48,7 +48,7 @@
    	 		wdate = sysdate
    	 where num = #num#
    </update>
-   
+    -->
    
    <!-- 글 삭제 -->
    <delete id="deleteBoard" parameterClass="int">
@@ -57,10 +57,10 @@
    
    
    <!-- 조회수 증가 -->
-   <update id="updateHit" parameterClass="int">
+  <!--  <update id="updateHit" parameterClass="int">
    	update boardtab set hit = hit + 1 where num = #data#
    </update>
-   
+    -->
    <!-- 글 등록 -->
  	<insert id="insertBoard" parameterClass="boardVO">
  		insert into boardtab 

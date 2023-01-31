@@ -30,7 +30,7 @@ public class BoardDaoImpl implements IBoardDao{
 		List<BoardVO> list = null;
 		
 		try {
-			list = client.queryForList("board.selectByPage");
+			list = client.queryForList("board.selectByPage",map);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -43,9 +43,8 @@ public class BoardDaoImpl implements IBoardDao{
 		int no = 0;
 		
 		try {
-			no = client.delete("board.deleteBoard");
+			no = client.delete("board.deleteBoard", num);
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
@@ -58,9 +57,8 @@ public class BoardDaoImpl implements IBoardDao{
 		int num = 0;
 		
 		try {
-			num = (int) client.insert("board.insertBoard");
+			num = (int) client.insert("board.insertBoard", vo);
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
@@ -72,9 +70,8 @@ public class BoardDaoImpl implements IBoardDao{
 		int num = 0;
 		
 		try {
-			num = (int) client.insert("board.totalCount");
+			num = (int) client.queryForObject("board.totalCount",map);
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
@@ -86,7 +83,7 @@ public class BoardDaoImpl implements IBoardDao{
 		int no = 0;
 		
 		try {
-			no = client.update("board.updateHit");
+			no = client.update("board.updateHit", num);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -99,7 +96,7 @@ public class BoardDaoImpl implements IBoardDao{
 		int num = 0;
 		
 		try {
-			num = (int) client.insert("reply.insertReply");
+			num = (int) client.insert("reply.insertReply", vo);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -113,7 +110,7 @@ public class BoardDaoImpl implements IBoardDao{
 		int num = 0;
 		
 		try {
-			num = client.delete("reply.deleteReply");
+			num = client.delete("reply.deleteReply", renum);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
