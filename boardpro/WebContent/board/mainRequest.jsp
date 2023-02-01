@@ -1,15 +1,22 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%-- <%@ page isELIgnored="false" %> --%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.1/dist/jquery.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 
+<script src="../js/board.js" type="text/javascript"></script>
 <script src="../js/jquery-3.6.3.min.js" type="text/javascript"></script>
+<script src="../js/jquery.serializejson.min.js" type="text/javascript"></script>
 <style type="text/css">
 .p1{
 	float: left;
@@ -26,97 +33,86 @@ input[name=reply] {
 	height: 50px;
 	vertical-align: top;
 }
-/* #stype{ */
-/* 	width: 10%; */
-/* 	margin-left: 100%; */
-/* } */
-/* #sword{ */
-/* 	float: left; */
-/* } */
-/* nav{ */
-/* 	width: 20%; */
-/* 	margin-left: 40%; */
-/* 	margin-top: 100px; */
-/* } */
+#stype{
+      width: 10%;    
+      margin-left: 100px;
+   }
+   #sword{
+      float : left;
+   }
+   nav{
+      width: 50%;
+      margin-left: 40%;
+      
+   }
+.pagination{
+	width: 20%;
+	float: left;
+}
+.plist{
+	margin-left: 20%;
+	
+}
+#write{
+	margin-left: 80%; 
+}
 </style>
 
 <script type="text/javascript">
+currentPage = 1;
 $(function() {
 	
-	stype = $('#stype option:selected').val();
-	sword = $('#sword').val().trim();
+	// 처음 실행
+	listPageServer(1);
 	
-	$.ajax({
-		url : '<%=request.getContextPath()%>/ListPage.do',
-		data : {'page' : 1, 
-				'stype' : stype, 
-				'sword' : sword
-				},
-		type : 'post',
-		success : function(res){
-			code = `<div class="container mt-3"><div id="accordion">`
-				$.each(res.datas, function(i, v) {
-		code +=	`<div class="card">
-					<div class="card-header">
-						<a class="btn" data-bs-toggle="collapse" href="#collapse\${v.num}">
-							\${v.subject} </a>
-					</div>
-					<div id="collapse\${v.num}" class="collapse">
-						<div class="card-body">
-							<p class="p1">
-								작성자<span class="bw">\${v.writer}</span>&nbsp;&nbsp;&nbsp; 
-								이메일<span class="bm">\${v.mail}</span>&nbsp;&nbsp;&nbsp;
-								조회수<span class="bh">\${v.hit}</span>&nbsp;&nbsp;&nbsp; 
-								날짜<span class="bd">\${v.wdate}</span>
-							</p>
-							<p class="p2">
-								<input type="button" idx="\${v.num}" value="수정" name="modify" class="action">
-								<input type="button" idx="\${v.num}" value="삭제" name="delete" class="action">
-							</p>
-							<p class="p3">
-								${v.content}
-							</p>
-							<p class="p4">
-								<textarea rows="" cols="60"></textarea>
-								<input type="button" idx="\${v.num}" value="등록" name="reply" class="action">
-							</p>
-						</div>
-					</div>
-				</div>`
-				
-				})
-				
-				code += `</div>
-					</div>`
-			
-				  	
-			$('.box').html(code);	  
-			
-			// 이전 출력
-			if(res.sp > 1){
-				pager = `<ul class="pagination">
-				  			<li class="page-item"><a class="page-link" href="#">Previous</a></li>
-						<ul>`
-			}
-			// 페이지 출력		
-			
-			// 다음 출력
-			if(res.ep < res.tp){
-				pager += `<ul class="pagination">
-		  			<li class="page-item"><a class="page-link" href="#">Next</a></li>
-				<ul>`
-			}	  	
-		},
-		error : function(xhr){
-			alert("상태 : " + xhr.status);
-		},
-		dataType : 'json'
+	// 페이지 번호 클릭 이벤트
+	$(document).on('click', '.pagination a.pnum', function(){
+		//alert($(this).text().trim());
+		currentPage = $(this).text().trim();
+		listPageServer(currentPage);
 	})
+	
+	// 이전 버튼 클릭 이벤트
+	$(document).on('click', '.prev', function(){
+		//alert(parseInt($('a.pnum').first().text().trim()) -1);
+		currentPage = parseInt($('a.pnum').first().text().trim()) -1;
+		listPageServer(currentPage);
+	})
+	
+	// 다음 버튼 클릭 이벤트
+	$(document).on('click', '.next', function(){
+		//alert(parseInt($('a.pnum').last().text().trim()) +1);
+		currentPage = parseInt($('a.pnum').last().text().trim()) +1;
+		listPageServer(currentPage);
+	})
+	
+	// 검색 이벤트
+	$('#search').on('click', function() {
+		listPageServer(1);
+	})
+	
+	// 글쓰기 전송 버튼 이벤트
+	$('#wsend').on('click', function() {
+		// 입력한 모든 값을 가져온다.
+		formdata = $('#wform').serialize();
+		formdata = $('#wform').serializeArray();
+		formdata = $('#wform').serializeJSON();
+		
+		console.log(formdata);
+		
+		boardWriteServer();
+		
+		$('#wModal').modal('hide');
+		$('.txt').val("");
+	})
+	
 })
 </script>
 
 </head>
 <body>
+<br><br>
+<input type="button" data-bs-toggle="modal" data-bs-target="#wModal" value="글쓰기" id="write" class="btn btn-primary" ><br><br>
 	
 <nav class="navbar navbar-expand-sm navbar-dark">
   	
@@ -129,13 +125,57 @@ $(function() {
   	
       <form class="d-flex">
         <input id="sword" class="form-control me-2" type="text" placeholder="Search">
-        <button class="btn btn-primary" type="button">Search</button>
+        <button id="search" class="btn btn-primary" type="button">Search</button>
       </form>
    
 </nav>
 	
-	<div class="box"></div>
-	<div class="plist"></div>
+	<div class="box"></div>		<!-- 게시판 리스트 출력 -->
+	<br><br><br>
+	<div class="plist"></div>	<!-- 페이지 리스트 출력 -->
+
+	
+<!-- 글쓰기 Modal -->
+<div class="modal" id="wModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">글쓰기</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+        <form id="wform" name="wform">
+        	<label>이름</label>
+        	<input type="text" class="txt" name="writer"><br>
+        	
+        	<label>제목</label>
+        	<input type="text" class="txt" name="subject"><br>
+        	
+        	<label>비밀번호</label>
+        	<input type="text" class="txt" name="password"><br>
+
+        	<label>이메일</label>
+        	<input type="text" class="txt" name="mail"><br>
+        	
+        	<label>내용</label>
+        	<textarea name="content" class="txt" rows="10" cols="60"></textarea><br>
+        	
+        	<input type="button" value="전송" id="wsend">
+        </form>
+      </div>
+
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+      </div>
+
+    </div>
+  </div>
+</div>
 
 </body>
 </html>

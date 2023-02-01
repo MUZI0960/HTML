@@ -16,7 +16,7 @@ public class PageVO {
 		this.totalPage = totalPage;
 	}
 	private static int perList = 3 ;	// 한 화면에 출력 할 글 리스트 수
-	private static int perPage = 2 ;	// 한 화면에 출력 할 페이지 수
+	private static int perPage = 3 ;	// 한 화면에 출력 할 페이지 수
 	
 	public int getStart() {
 		return start;

@@ -13,6 +13,7 @@
 List<BoardVO> list = (List<BoardVO>)request.getAttribute("list");
 PageVO vo = (PageVO)request.getAttribute("vo");
 
+// json 데이터 생성
 JsonObject obj = new JsonObject();
 obj.addProperty("sp", vo.getStartPage());
 obj.addProperty("ep", vo.getEndPage());
