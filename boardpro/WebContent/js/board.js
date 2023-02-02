@@ -2,6 +2,23 @@
  * 
  */
 
+boardModifyServer = function(){
+	
+	$.ajax({
+		url : 'http://localhost/boardpro/BoardModify.do',
+		data : formdata,
+		type : 'post',
+		success : function(res){
+			alert(res.flag);
+		},
+		error : function(xhr){
+			alert("상태 : " + xhr.status);
+		},
+		dataType : 'json'
+		
+	})
+}
+
 boardDeleteServer = function(){
 	
 	$.ajax({

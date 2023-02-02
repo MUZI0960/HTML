@@ -72,6 +72,21 @@
 		 
  	</insert>
    
+   <!-- 글 수정 -->
+   <update id="modifyBoard" parameterClass="boardVO">
+       update boardtab set 
+          subject = #subject#,
+          mail = #mail#,
+          password = #password#,
+          content = #content#,
+          wip = #wip#,
+          wdate = sysdate
+       where
+          num = #num#
+
+   </update>
+   
+   
 </sqlMap>
 
 

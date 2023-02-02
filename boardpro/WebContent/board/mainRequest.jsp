@@ -88,7 +88,7 @@ $(function() {
 	
 	// 검색 이벤트
 	$('#search').on('click', function() {
-		listPageServer(1    );
+		listPageServer(1);
 	})
 	
 	// 글쓰기 전송 버튼 이벤트
@@ -107,7 +107,7 @@ $(function() {
 	})
 	
 	// 버튼 클릭 이벤트 - 수정, 삭제, 댓글 등록, 댓글 수정, 댓글 삭제
-	$(document).on('click', '.action', function() {
+	$(document).on('click', '.action', function(){
 		vaction = $(this).attr('name').trim();
 		vidx = $(this).attr('idx').trim();
 		
@@ -117,10 +117,23 @@ $(function() {
 			
 			// 본문의 card에서 해당 값들을 가져와서 모달창에 띄움
 			vparents = $(this).parents('.card');
-			vparents.find('a').text(); 		// 제목
-			vparents.find('bw').text(); 	// 이름
-				// 메일
-				// 내용
+			
+			va = vparents.find('a').text().trim(); 		// 제목
+			vw = vparents.find('.bw').text().trim(); 	// 이름
+			vm = vparents.find('.bm').text().trim();	// 메일
+			vp = vparents.find('.p3').html();			// 내용 - <br> 태그 들어있음.
+			vp = vp.replaceAll(/<br>/g, "\n");
+			console.log(va, vw, vm);
+			
+			$('#mform #num').val(vidx);
+
+			$('#mform #subject').val(va);
+			$('#mform #mail').val(vm);
+			$('#mform #content').val(vp);
+			
+			$('#mform #writer').prop('disabled', true);
+			$('#mform #writer').attr('disabled', 'disabled');
+			
 			
 		}else if(vaction == "delete"){
 			alert(vidx + "번 글을 삭제합니다.");
@@ -135,7 +148,18 @@ $(function() {
 	
 	
 	// 모달창에서 수정 - 수정 후 전송 버튼 클릭 이벤트
-	
+	$('#msend').on('click', function(){
+		
+		// 모든 입력한 값을 가져온다
+		formdata = $('#mform').serializeJSON();
+		
+		// DB수정 - 화면 수정
+		boardModifyServer();
+		
+		// 모달창 닫기, 모달창 값 지우기
+		$('#mModal').modal('hide');
+		$('#mform .txt').val("");
+	})
 		
 	
 })
@@ -225,19 +249,21 @@ $(function() {
       <div class="modal-body">
         <form id="mform" name="mform">
         	<label>이름</label>
-        	<input type="text" class="txt" name="writer"><br>
+        	<input type="text" id="writer" class="txt" name="writer"><br>
+        	
+        	<input type="hidden" class="txt" id="num" name="num">
         	
         	<label>제목</label>
-        	<input type="text" class="txt" name="subject"><br>
+        	<input type="text" id="subject" class="txt" name="subject"><br>
         	
         	<label>비밀번호</label>
-        	<input type="text" class="txt" name="password"><br>
+        	<input type="text" id="password" class="txt" name="password"><br>
 
         	<label>이메일</label>
-        	<input type="text" class="txt" name="mail"><br>
+        	<input type="text" id="mail" class="txt" name="mail"><br>
         	
         	<label>내용</label>
-        	<textarea name="content" class="txt" rows="10" cols="60"></textarea><br>
+        	<textarea name="content" id="content" class="txt" rows="10" cols="60"></textarea><br>
         	
         	<input type="button" value="전송" id="msend">
         </form>
