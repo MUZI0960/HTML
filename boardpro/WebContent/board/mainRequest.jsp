@@ -142,6 +142,19 @@ $(function() {
 			
 		}else if (vaction == "reply") {
 			alert(vidx + "번 글의 댓글을 작성합니다.");
+			
+			// 입력한 내용 (textarea), name(random), bonum
+			reply = { };
+			reply.cont = $(this).prev().text();
+			reply.bonum = idx;
+			name1 = String.fromCharCode(parseInt(Math.random()*26 + 65));
+			name2 = String.fromCharCode(parseInt(Math.random()*26 + 97));
+			name3 = parseInt(Math.random()*100 + 1);
+			
+			reply.name = name1 + name2 + name3;
+			
+			replyInsertServer();
+			
 		}
 	})
 	
@@ -199,7 +212,7 @@ $(function() {
       <!-- Modal Header -->
       <div class="modal-header">
         <h4 class="modal-title">글쓰기</h4>
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <button type="button" class="close" data-bs-dismiss="modal">&times;</button>
       </div>
 
       <!-- Modal body -->
@@ -226,7 +239,7 @@ $(function() {
 
       <!-- Modal footer -->
       <div class="modal-footer">
-        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
       </div>
 
     </div>
@@ -242,7 +255,7 @@ $(function() {
       <!-- Modal Header -->
       <div class="modal-header">
         <h4 class="modal-title">글수정</h4>
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <button type="button" class="close" data-bs-dismiss="modal">&times;</button>
       </div>
 
       <!-- Modal body -->
@@ -271,7 +284,7 @@ $(function() {
 
       <!-- Modal footer -->
       <div class="modal-footer">
-        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
       </div>
 
     </div>

@@ -2,14 +2,42 @@
  * 
  */
 
+replyInsertServer = function(){
+	
+	$.ajax({
+		url : 'http://localhost/boardpro/ReplyInsert.do',
+		data : reply, /* name, bonum, cont */
+		type : 'post',
+		success : function(res){
+			
+		},
+		error : function(xhr){
+			alert("상태 : " + xhr.status);
+		},
+		dataType : 'json'
+		
+	})
+	
+}
+
 boardModifyServer = function(){
 	
 	$.ajax({
 		url : 'http://localhost/boardpro/BoardModify.do',
-		data : formdata,
+		data : formdata, /* writer, mail, subject, content */
 		type : 'post',
 		success : function(res){
 			alert(res.flag);
+			if(res.flag == "성공"){
+				// 본문 수정 - modal창의 내용으로  (formdata)
+				vparents.find('a').text(formdata.subject); 	// 제목
+				vparents.find('.bm').text(formdata.mail);	// 메일
+				
+				vp3 = vparents.find('.p3').html();	// 내용 - <\r\n> 태그 들어있음. -> <br>태그로 변환
+				vp3 = vp3.replaceAll(/\n/g, "<br>");
+				
+				vparents.find('.p3').html(vp3); 	// 내용
+			}
 		},
 		error : function(xhr){
 			alert("상태 : " + xhr.status);
@@ -100,9 +128,7 @@ listPageServer = function(vpage){
 								<input type="button" idx="${v.num}" data-bs-toggle="modal" data-bs-target="#mModal" value="수정" name="modify" class="action">
 								<input type="button" idx="${v.num}" value="삭제" name="delete" class="action">
 							</p>
-							<p class="p3">
-								${content}
-							</p>
+							<p class="p3">${content}</p>
 							<p class="p4">
 								<textarea rows="" cols="60"></textarea>
 								<input type="button" idx="${v.num}" value="등록" name="reply" class="action">
@@ -128,6 +154,7 @@ listPageServer = function(vpage){
 			}
 			// 페이지 출력		
 			//currentPage = res.tp;
+			if(vpage > res.tp) currentPage = res.tp;
 			
 			pager += `<ul class="pagination">`;
 			for(i=res.sp; i<=res.ep; i++){

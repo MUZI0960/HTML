@@ -80,7 +80,7 @@ public class BoardServiceImpl implements IBoardService{
 	public int modifyReply(ReplyVO vo) {
 		int num = 0;
 		num = dao.modifyReply(vo);
-		return 0;
+		return num;
 	}
 
 	@Override

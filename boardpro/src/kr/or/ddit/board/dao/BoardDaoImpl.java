@@ -121,8 +121,16 @@ public class BoardDaoImpl implements IBoardDao{
 
 	@Override
 	public int modifyReply(ReplyVO vo) {
-		// TODO Auto-generated method stub
-		return 0;
+		int num = 0;
+		
+		try {
+			num = client.update("reply.modifyReply", vo);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return num;
 	}
 
 	@Override
