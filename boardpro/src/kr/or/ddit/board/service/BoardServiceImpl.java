@@ -105,6 +105,11 @@ public class BoardServiceImpl implements IBoardService{
 		int perList = PageVO.getPerList();
 		int totalPage = (int) (Math.ceil((double) count / perList));
 		
+		// 추가한 내용
+		// ex) 마지막 페이지 8 -> 글이 지워져서 8 페이지가 사라진 경우
+		// 페이지 번호를 7로 수정
+		if(page > totalPage) page = totalPage;
+		
 		// start, end 구하기 - page를 기준
 		int start = (page-1) * perList + 1;
 		int end = start + perList -1;

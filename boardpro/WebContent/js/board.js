@@ -2,6 +2,31 @@
  * 
  */
 
+boardDeleteServer = function(){
+	
+	$.ajax({
+		url : 'http://localhost/boardpro/BoardDelete.do',
+		data : { "num" : vidx },
+		type : 'get',
+		success : function(res){
+			// 성공 시 - listPageServer(currentPage)
+			
+			//alert(res.flag);
+			if(res.flag == "성공"){
+				listPageServer(currentPage);
+				//currentPage = res.tp;
+			}
+			
+		},
+		error : function(xhr){
+			alert("상태 : " + xhr.status);
+		},
+		dataType : 'json'
+	})
+	
+}
+
+
 boardWriteServer = function(){
 	$.ajax({
 		url : 'http://localhost/boardpro/BoardWrite.do',
@@ -36,8 +61,12 @@ listPageServer = function(vpage){
 		type : 'post',
 		success : function(res){
 			code = `<div class="container mt-3"><div id="accordion">`
-				$.each(res.datas, function(i, v) {
-		code +=	`<div class="card">
+			$.each(res.datas, function(i, v) {
+				
+				content = v.content;
+				content = content.replaceAll(/\n/g, "<br>");		
+					
+			code +=	`<div class="card">
 					<div class="card-header">
 						<a class="btn" data-bs-toggle="collapse" href="#collapse${v.num}">
 							${v.subject} </a>
@@ -51,11 +80,11 @@ listPageServer = function(vpage){
 								날짜<span class="bd">${v.wdate}</span>
 							</p>
 							<p class="p2">
-								<input type="button" idx="${v.num}" value="수정" name="modify" class="action">
+								<input type="button" idx="${v.num}" data-bs-toggle="modal" data-bs-target="#mModal" value="수정" name="modify" class="action">
 								<input type="button" idx="${v.num}" value="삭제" name="delete" class="action">
 							</p>
 							<p class="p3">
-								${v.content}
+								${content}
 							</p>
 							<p class="p4">
 								<textarea rows="" cols="60"></textarea>
@@ -81,6 +110,8 @@ listPageServer = function(vpage){
 						</ul>`
 			}
 			// 페이지 출력		
+			//currentPage = res.tp;
+			
 			pager += `<ul class="pagination">`;
 			for(i=res.sp; i<=res.ep; i++){
 				if(i == currentPage){

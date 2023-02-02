@@ -88,7 +88,7 @@ $(function() {
 	
 	// 검색 이벤트
 	$('#search').on('click', function() {
-		listPageServer(1);
+		listPageServer(1    );
 	})
 	
 	// 글쓰기 전송 버튼 이벤트
@@ -105,6 +105,38 @@ $(function() {
 		$('#wModal').modal('hide');
 		$('.txt').val("");
 	})
+	
+	// 버튼 클릭 이벤트 - 수정, 삭제, 댓글 등록, 댓글 수정, 댓글 삭제
+	$(document).on('click', '.action', function() {
+		vaction = $(this).attr('name').trim();
+		vidx = $(this).attr('idx').trim();
+		
+		if(vaction == "modify"){
+			alert(vidx + "번 글을 수정합니다.");
+			// 수정 버튼 클릭 시 모달 창 띄움 data-bs-toggle="modal" data-bs-target="#mModal"
+			
+			// 본문의 card에서 해당 값들을 가져와서 모달창에 띄움
+			vparents = $(this).parents('.card');
+			vparents.find('a').text(); 		// 제목
+			vparents.find('bw').text(); 	// 이름
+				// 메일
+				// 내용
+			
+		}else if(vaction == "delete"){
+			alert(vidx + "번 글을 삭제합니다.");
+			
+			boardDeleteServer();
+			
+		}else if (vaction == "reply") {
+			alert(vidx + "번 글의 댓글을 작성합니다.");
+		}
+	})
+	
+	
+	
+	// 모달창에서 수정 - 수정 후 전송 버튼 클릭 이벤트
+	
+		
 	
 })
 </script>
@@ -176,6 +208,50 @@ $(function() {
     </div>
   </div>
 </div>
+
+
+<!-- 글수정 Modal -->
+<div class="modal" id="mModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">글수정</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+        <form id="mform" name="mform">
+        	<label>이름</label>
+        	<input type="text" class="txt" name="writer"><br>
+        	
+        	<label>제목</label>
+        	<input type="text" class="txt" name="subject"><br>
+        	
+        	<label>비밀번호</label>
+        	<input type="text" class="txt" name="password"><br>
+
+        	<label>이메일</label>
+        	<input type="text" class="txt" name="mail"><br>
+        	
+        	<label>내용</label>
+        	<textarea name="content" class="txt" rows="10" cols="60"></textarea><br>
+        	
+        	<input type="button" value="전송" id="msend">
+        </form>
+      </div>
+
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
 
 </body>
 </html>
