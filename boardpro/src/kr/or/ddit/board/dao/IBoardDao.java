@@ -35,4 +35,7 @@ public interface IBoardDao {
 	// 댓글 삭제
 	public int deleteReply(int renum);
 	
+	// 댓글 리스트
+	public List<ReplyVO> selectReply(int bonum);
+	
 }

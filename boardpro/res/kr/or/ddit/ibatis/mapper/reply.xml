@@ -35,4 +35,8 @@
 	
 </update>
 
+<select id="selectReply" parameterClass="int" resultClass="replyVO">
+	select * from replytab where bonum = #data#
+</select>
+
 </sqlMap>

@@ -131,5 +131,12 @@ public class BoardServiceImpl implements IBoardService{
 		
 		return vo;
 	}
+
+	@Override
+	public List<ReplyVO> selectReply(int bonum) {
+		List<ReplyVO> list = null;
+		list = dao.selectReply(bonum);
+		return list;
+	}
 	
 }

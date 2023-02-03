@@ -56,11 +56,25 @@ input[name=reply] {
 #write{
 	margin-left: 80%; 
 }
+.reply-body{
+	border: 1px dotted pink;
+	background: #FFFAFA;
+	padding: 10px;
+	margin: 3px;
+}
+
+#modifyForm{
+	display: none;
+}
+
 </style>
 
 <script type="text/javascript">
 currentPage = 1;
 $(function() {
+	
+// 	$('#modifyForm').css('display', 'none');
+// 	$('#modifyForm').hide();
 	
 	// 처음 실행
 	listPageServer(1);
@@ -106,7 +120,7 @@ $(function() {
 		$('.txt').val("");
 	})
 	
-	// 버튼 클릭 이벤트 - 수정, 삭제, 댓글 등록, 댓글 수정, 댓글 삭제
+	// 버튼 클릭 이벤트 - 수정, 삭제, 댓글 등록, 댓글 수정, 댓글 삭제, 제목 클릭
 	$(document).on('click', '.action', function(){
 		vaction = $(this).attr('name').trim();
 		vidx = $(this).attr('idx').trim();
@@ -154,6 +168,25 @@ $(function() {
 			reply.name = name1 + name2 + name3;
 			
 			replyInsertServer();
+			$(this).prev().val("");
+			
+			gthis = this;
+			
+		}else if (vaction == "r_delete") {
+			//alert(vidx + "번 댓글을 삭제합니다.");
+			replyDeleteServer(this);
+			
+		}else if (vaction == "r_modify") {
+			alert(vidx + "번 댓글을 수정합니다.");
+			
+			
+			
+			
+		}else if (vaction == "title") {
+			alert(vidx + "번 내용과 댓글을 보여줍니다.");
+			
+			gthis = this;
+			replyListServer();
 			
 		}
 	})
@@ -181,6 +214,13 @@ $(function() {
 </head>
 <body>
 <br><br>
+
+<form id="modifyForm">
+	<textarea id="area" rows="5" cols="20"></textarea>
+	<input id="btnok" type="button" value="확인">
+	<input id="btncancel" type="button" value="취소">
+</form>
+
 <input type="button" data-bs-toggle="modal" data-bs-target="#wModal" value="글쓰기" id="write" class="btn btn-primary" ><br><br>
 	
 <nav class="navbar navbar-expand-sm navbar-dark">

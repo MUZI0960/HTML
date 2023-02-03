@@ -2,6 +2,72 @@
  * 
  */
 
+replyDeleteServer = function(but){ 	// but : 댓글 삭제 버튼
+	
+	$.ajax({
+		url : 'http://localhost/boardpro/ReplyDelete.do',
+		data : {"renum" : vidx}, 
+		type : 'post',
+		success : function(res){
+			// 성공 시 - 화면 삭제
+			if(res.flag == "성공"){
+				// 댓글삭제 버튼을 기준으로 조상(.reply-body)를 찾아서 지운다
+				$(but).parents('.reply-body').remove();
+			}
+			
+		},
+		error : function(xhr){
+			alert("상태 : " + xhr.status);
+		},
+		dataType : 'json'
+		
+		
+	})
+}
+
+replyListServer = function(){
+	
+	$.ajax({
+		url : 'http://localhost/boardpro/ReplyList.do',
+		data : {"bonum" : vidx}, // data : {"bonum" : reply.bonum}
+		type : 'post',
+		success : function(res){
+			rcode = "";
+			
+			$.each(res, function(i, v){
+				
+				cont = v.cont;
+				cont = cont.replaceAll(/\n/g, "<br>");
+				
+				rcode += `<div class="reply-body">
+								<p class="p1">
+									작성자<span class="bw">${v.name}</span>&nbsp;&nbsp;&nbsp; 
+									날짜<span class="bd">${v.redate}</span>
+								</p>
+								<p class="p2">
+									<input type="button" idx="${v.renum}" value="댓글수정" name="r_modify" class="action">
+									<input type="button" idx="${v.renum}" value="댓글삭제" name="r_delete" class="action">
+								</p>
+								<p class="p3">${cont}</p>
+							</div>`	
+				
+			})
+			
+			// 출력
+			// 클릭한 등록버튼 또는 제목을 기준으로 card-body를 검색하여 rcode(reply-body)를 추가
+			$(gthis).parents('.card').find('.reply-body').remove();
+			
+			$(gthis).parents('.card').find('.card-body').append(rcode);
+			
+		},
+		error : function(xhr){
+			alert("상태 : " + xhr.status);
+		},
+		dataType : 'json'
+	})
+	
+}
+
 replyInsertServer = function(){
 	
 	$.ajax({
@@ -12,6 +78,7 @@ replyInsertServer = function(){
 			alert(res.flag);
 			
 			// 성공 시 화면에 댓글을 출력
+			replyListServer(); 
 		},
 		error : function(xhr){
 			alert("상태 : " + xhr.status);
@@ -115,7 +182,7 @@ listPageServer = function(vpage){
 					
 			code +=	`<div class="card">
 					<div class="card-header">
-						<a class="btn" data-bs-toggle="collapse" href="#collapse${v.num}">
+						<a class="btn action" name="title" idx="${v.num}" data-bs-toggle="collapse" href="#collapse${v.num}">
 							${v.subject} </a>
 					</div>
 					<div id="collapse${v.num}" class="collapse">

@@ -147,6 +147,20 @@ public class BoardDaoImpl implements IBoardDao{
 		return num;
 	}
 
+	@Override
+	public List<ReplyVO> selectReply(int bonum) {
+		List<ReplyVO> list = null;
+		
+		try {
+			list = client.queryForList("reply.selectReply", bonum);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return list;
+	}
+
 	
 	
 	
