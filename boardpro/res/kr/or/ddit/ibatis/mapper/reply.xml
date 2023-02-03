@@ -9,14 +9,14 @@
 <insert id="insertReply" parameterClass="replyVO">
 	insert into replytab
 	values(
-		reply_num_seq.nextval,
+		REPLYTAB_RENUM_SEQ.nextval,
 		#bonum#,
 		#name#,
 		#cont#,
 		sysdate
 	)
 	<selectKey keyProperty="renum">
-	select reply_num_seq.currval from dual
+	select REPLYTAB_RENUM_SEQ.currval from dual
 	</selectKey>
 </insert>
 

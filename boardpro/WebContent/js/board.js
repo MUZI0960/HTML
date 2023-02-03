@@ -9,7 +9,9 @@ replyInsertServer = function(){
 		data : reply, /* name, bonum, cont */
 		type : 'post',
 		success : function(res){
+			alert(res.flag);
 			
+			// 성공 시 화면에 댓글을 출력
 		},
 		error : function(xhr){
 			alert("상태 : " + xhr.status);

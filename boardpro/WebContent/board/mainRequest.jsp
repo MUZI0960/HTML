@@ -145,8 +145,8 @@ $(function() {
 			
 			// 입력한 내용 (textarea), name(random), bonum
 			reply = { };
-			reply.cont = $(this).prev().text();
-			reply.bonum = idx;
+			reply.cont = $(this).prev().val();
+			reply.bonum = vidx;
 			name1 = String.fromCharCode(parseInt(Math.random()*26 + 65));
 			name2 = String.fromCharCode(parseInt(Math.random()*26 + 97));
 			name3 = parseInt(Math.random()*100 + 1);
