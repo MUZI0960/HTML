@@ -192,10 +192,17 @@ $(function() {
 			$('#modifyForm').show();
 			
 		}else if (vaction == "title") {
-			alert(vidx + "번 내용과 댓글을 보여줍니다.");
+			//alert(vidx + "번 내용과 댓글을 보여줍니다.");
 			
 			gthis = this;
 			replyListServer();
+			
+			// 조회수 증가
+			vattr = $(this).attr("aria-expanded");
+			if(vattr == "true"){
+				alert(vidx+"조회수 증가");
+				hitUpdateServer();
+			}
 			
 		}
 	})

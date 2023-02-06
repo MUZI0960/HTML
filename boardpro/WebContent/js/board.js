@@ -2,13 +2,39 @@
  * 
  */
 
+hitUpdateServer = function(){
+	$.ajax({
+		url : 'http://localhost/boardpro/HitUpdate.do',
+		data : {"num" : vidx}, 
+		type : 'get',
+		success : function(res){
+			//alert(res.flag);
+			if(res.flag=="성공"){
+				// 화면 수정
+				vhit = $(gthis).psrents('.card').find('.bh').text().trim();
+				
+				vhit = parseInt(vhit) + 1;
+				
+				$(gthis).psrents('.card').find('.bh').text(vhit);
+			}
+			
+			
+		},
+		error : function(xhr){
+			alert("상태 : " + xhr.status);
+		},
+		dataType : 'json'
+	
+	})
+}
+
 replyUpdate = function(){
 	$.ajax({
 		url : 'http://localhost/boardpro/ReplyUpdate.do',
 		data : {"cont" : modicont, "num" : vidx}, 
 		type : 'post',
 		success : function(res){
-			alert(res.flag);
+			//alert(res.flag);
 			
 			// 성공 시 
 			if(res.flag == "성공"){
