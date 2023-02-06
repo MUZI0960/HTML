@@ -11,9 +11,9 @@ replyUpdate = function(){
 			alert(res.flag);
 			
 			// 성공 시 
-			//if(res.flag == "성공"){
-//				vp3.html(vmodicont);
-//			}
+			if(res.flag == "성공"){
+				vp3.html(vmodicont);
+			}
 			
 		},
 		error : function(xhr){
