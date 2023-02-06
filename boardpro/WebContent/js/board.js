@@ -2,6 +2,28 @@
  * 
  */
 
+replyUpdate = function(){
+	$.ajax({
+		url : 'http://localhost/boardpro/ReplyUpdate.do',
+		data : {"cont" : modicont, "num" : vidx}, 
+		type : 'post',
+		success : function(res){
+			alert(res.flag);
+			
+			// 성공 시 
+			//if(res.flag == "성공"){
+//				vp3.html(vmodicont);
+//			}
+			
+		},
+		error : function(xhr){
+			alert("상태 : " + xhr.status);
+		},
+		dataType : 'json'
+			
+	})
+}
+
 replyDeleteServer = function(but){ 	// but : 댓글 삭제 버튼
 	
 	$.ajax({

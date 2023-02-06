@@ -179,8 +179,17 @@ $(function() {
 		}else if (vaction == "r_modify") {
 			alert(vidx + "번 댓글을 수정합니다.");
 			
+			// 원본 내용 가져오기
+			vcont = $(this).parents('.reply-body').find('.p3').html(); // br태그가 포함
 			
+			// br 태그를 \n으로 변경
+			vmcont = vcont.replaceAll(/<br>/g, "\n");
 			
+			// modifyForm
+			$('#modifyForm textarea').val(vmcont);
+			
+			$(this).parents('.reply-body').find('.p3').empty().append($('#modifyForm'));
+			$('#modifyForm').show();
 			
 		}else if (vaction == "title") {
 			alert(vidx + "번 내용과 댓글을 보여줍니다.");
@@ -206,7 +215,43 @@ $(function() {
 		$('#mModal').modal('hide');
 		$('#mform .txt').val("");
 	})
+	
+	// 댓글 수정에서 취소버튼 클릭 이벤트
+	$('#btncancel').on('click', function(){
+		//p3를 검색
+		vp3 = $(this).parents('.p3');
+		//vp3 = $('#modifyForm').parent();
 		
+		// modifyForm을 body로 이동
+		$('#modifyForm').appendTo('body');
+		$('#modifyForm').hide();
+		
+		// 원래 내용을 p3에 출력
+		$(vp3).html(vcont);
+	})
+	
+	// 댓글 수정에서 확인버튼 클릭 이벤트
+	$('#btnok').on('click', function(){
+		
+		// 수정내용 가져오기 - 엔터가 포함
+		modicont = $(this).parents('.p3').find('textarea').val().trim();
+		
+		// p3을 검색
+		vp3 = $(this).parents('.p3');
+		
+		// modifyForm을 body로 이동
+		$('#modifyForm').appendTo('body');
+		$('#modifyForm').hide();
+		
+		// 화면 수정 - <br> 태그로 변경
+		vmodicont = modicont.replaceAll(/\n/g, "<br>");
+		//vp3.html(vmodicont);
+		
+		// db를 수정 - db 수정 후 성공 시 화면 수정
+		replyUpdate();		
+				
+		
+	})
 	
 })
 </script>
@@ -216,7 +261,7 @@ $(function() {
 <br><br>
 
 <form id="modifyForm">
-	<textarea id="area" rows="5" cols="20"></textarea>
+	<textarea id="area" rows="5" cols="60"></textarea>
 	<input id="btnok" type="button" value="확인">
 	<input id="btncancel" type="button" value="취소">
 </form>
